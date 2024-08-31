@@ -1,0 +1,2578 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Markdown Preview</title>
+    <style>
+        /* General Styles */
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        header h1 {
+            margin: 0;
+            color: #333;
+        }
+
+        main {
+            margin-bottom: 20px;
+        }
+
+        article h2, article h3 {
+            color: #333;
+        }
+
+        article p {
+            margin: 0 0 15px;
+            color: #555;
+        }
+
+        article a {
+            color: #1e90ff;
+            text-decoration: none;
+        }
+
+        article a:hover {
+            text-decoration: underline;
+        }
+
+        article ul, article ol {
+            margin: 0 0 15px 20px;
+        }
+
+        article blockquote {
+            padding: 10px 20px;
+            margin: 0 0 15px;
+            border-left: 4px solid #1e90ff;
+            background: #f9f9f9;
+            color: #555;
+        }
+
+        article pre {
+            background: #2d2d2d;
+            color: #f8f8f2;
+            padding: 10px;
+            border-radius: 4px;
+            overflow-x: auto;
+        }
+
+        article code {
+            background: #f4f4f4;
+            padding: 2px 4px;
+            border-radius: 4px;
+        }
+
+        article img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 0 auto;
+        }
+
+        hr {
+            border: 0;
+            border-top: 1px solid #ddd;
+            margin: 20px 0;
+        }
+
+        footer {
+            text-align: center;
+            color: #777;
+            font-size: 0.9em;
+        }
+      
+      
+        #table-of-contents {
+            margin-bottom: 20px;
+            padding: 10px;
+            background-color: #f4f4f4;
+            border: 1px solid #ccc;
+        }
+        #table-of-contents ul {
+            list-style-type: none;
+            padding-left: 20px;
+        }
+        #table-of-contents li {
+            margin-bottom: 5px;
+        }
+        #table-of-contents a {
+            text-decoration: none;
+            color: #337ab7;
+        }
+        #table-of-contents a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const toc = document.querySelector("#table-of-contents ul");
+            const headers = document.querySelectorAll("h1, h2, h3, h4, h5, h6");
+
+            headers.forEach((header, index) => {
+                // Crear un ID único para cada encabezado si no tiene uno
+                if (!header.id) {
+                    header.id = "header-" + index;
+                }
+
+                // Crear un elemento de lista para el índice
+                const listItem = document.createElement("li");
+
+                // Ajustar la indentación según el nivel del encabezado
+                listItem.style.marginLeft = (header.tagName[1] - 1) * 20 + "px";
+
+                // Crear un enlace al encabezado
+                const link = document.createElement("a");
+                link.href = "#" + header.id;
+                link.textContent = header.textContent;
+
+                // Añadir el enlace al elemento de lista
+                listItem.appendChild(link);
+
+                // Añadir el elemento de lista al índice
+                toc.appendChild(listItem);
+            });
+        });
+    </script>
+    <div id="table-of-contents">
+        <h2>Índice</h2>
+        <ul></ul>
+    </div>
+<h3 class="code-line" data-line-start=0 data-line-end=1 ><a id="Introduccin_0"></a>Introducción</h3>
+<p class="has-line-data" data-line-start="2" data-line-end="3">En este vídeo, aprenderás paso a paso y con todo tipo de detalles a crear aplicaciones con el objetivo de ganar dinero. Esta formación la impartirá Tomás Viana, un joven de Medellín, Colombia, que logró pasar de tener problemas económicos y solo $30 ahorrados a ganar $10,000 al mes gracias a su habilidad para crear aplicaciones. Algo que me parece especialmente interesante es que estos pagos son estables cada mes. Genera la misma cantidad de ingresos debido a que trabaja como freelance para una empresa con un contrato a largo plazo, lo que le asegura esta estabilidad económica. A pesar de que Tomás aún tiene algunas deudas debido a los problemas económicos pasados, puede solucionarlas poco a poco, y sobre todo, brinda estabilidad a su esposa y a sus dos hijos.</p>
+<h3 class="code-line" data-line-start=4 data-line-end=5 ><a id="Herramienta_Utilizada_Flutter_4"></a>Herramienta Utilizada: Flutter</h3>
+<p class="has-line-data" data-line-start="6" data-line-end="7">Flutter es la herramienta que vamos a utilizar para crear aplicaciones. Básicamente, es una herramienta que nos permite crear aplicaciones utilizando elementos preconstruidos. Esto facilita la creación de aplicaciones profesionales de manera bastante sencilla. Aunque, por supuesto, es necesario formarse y dedicar tiempo para dominar esta herramienta.</p>
+<h4 class="code-line" data-line-start=8 data-line-end=9 ><a id="Ventajas_de_Flutter_8"></a>Ventajas de Flutter</h4>
+<ul>
+<li class="has-line-data" data-line-start="10" data-line-end="11"><strong>Multiplataforma</strong>: Permite crear aplicaciones para Android, iOS, Windows y macOS.</li>
+<li class="has-line-data" data-line-start="11" data-line-end="12"><strong>Simplicidad</strong>: Facilita la creación de aplicaciones profesionales.</li>
+<li class="has-line-data" data-line-start="12" data-line-end="13"><strong>Accesibilidad</strong>: No requiere una inversión inicial significativa. Solo necesitas un ordenador con conexión a Internet.</li>
+<li class="has-line-data" data-line-start="13" data-line-end="15"><strong>Flexibilidad Laboral</strong>: Puedes conseguir trabajos que se pueden ejercer desde cualquier parte del mundo y que se remuneran en dólares.</li>
+</ul>
+<h3 class="code-line" data-line-start=15 data-line-end=16 ><a id="Oportunidades_Laborales_15"></a>Oportunidades Laborales</h3>
+<p class="has-line-data" data-line-start="17" data-line-end="18">Aprender la habilidad de crear aplicaciones ofrece varias ventajas, como la posibilidad de conseguir trabajos que se pueden realizar desde cualquier lugar y que están remunerados en dólares. En el caso de Tomás, él trabaja como freelance para una empresa con un contrato a largo plazo, lo que le proporciona estabilidad económica. Tú también puedes seguir este camino y explorar las oportunidades que ofrece esta habilidad.</p>
+<h3 class="code-line" data-line-start=19 data-line-end=20 ><a id="Tecnologas_y_Metodologas_en_Desarrollo_19"></a>Tecnologías y Metodologías en Desarrollo</h3>
+<h4 class="code-line" data-line-start=21 data-line-end=22 ><a id="Uso_de_Git_21"></a>Uso de Git</h4>
+<p class="has-line-data" data-line-start="23" data-line-end="24">Cualquiera que sea la tecnología que elijas, todos los desarrolladores utilizan <strong>Git</strong> como sistema de control de versiones. Git es esencial para trabajar con equipos distribuidos y permite que personas de diferentes partes del mundo contribuyan a un mismo código. Mantiene la sincronía de los cambios, la estabilidad, y la integridad del proyecto. Al final, también abordaremos cómo Git se integra con metodologías ágiles.</p>
+<h4 class="code-line" data-line-start=25 data-line-end=26 ><a id="Metodologas_giles_25"></a>Metodologías Ágiles</h4>
+<p class="has-line-data" data-line-start="27" data-line-end="28">Las <strong>metodologías ágiles</strong> son fundamentales en el desarrollo tecnológico. Aunque muchas personas en otras industrias no están familiarizadas con ellas, en tecnología es esencial entender cómo funcionan. En mi experiencia, comprender las metodologías ágiles es crucial para el éxito en el desarrollo de software.</p>
+<ul>
+<li class="has-line-data" data-line-start="29" data-line-end="31"><strong>Scom</strong>: Se enfoca en cómo es el día a día de un desarrollador trabajando desde casa y cómo colabora con un equipo remoto. Esto incluye la forma en que se rinde cuentas, se evalúa el rendimiento y se organiza el trabajo.</li>
+</ul>
+<h4 class="code-line" data-line-start=31 data-line-end=32 ><a id="Habilidades_Tcnicas_y_Blandas_31"></a>Habilidades Técnicas y Blandas</h4>
+<p class="has-line-data" data-line-start="33" data-line-end="34">En el desarrollo, existen dos tipos de habilidades: técnicas y blandas. Ambas son importantes, pero las habilidades blandas son igual o tal vez más importantes que las técnicas si deseas crecer exponencialmente.</p>
+<h5 class="code-line" data-line-start=35 data-line-end=36 ><a id="Habilidades_Tcnicas_35"></a>Habilidades Técnicas</h5>
+<p class="has-line-data" data-line-start="37" data-line-end="38">Estas son las habilidades más específicas, como el uso de tecnologías y herramientas como Git y metodologías ágiles.</p>
+<h5 class="code-line" data-line-start=39 data-line-end=40 ><a id="Habilidades_Blandas_39"></a>Habilidades Blandas</h5>
+<p class="has-line-data" data-line-start="41" data-line-end="42">Las habilidades blandas incluyen:</p>
+<ul>
+<li class="has-line-data" data-line-start="43" data-line-end="44"><strong>Comunicación</strong>: La capacidad de expresar ideas claramente.</li>
+<li class="has-line-data" data-line-start="44" data-line-end="45"><strong>Persuasión</strong>: Saber convencer a otros de tus puntos de vista.</li>
+<li class="has-line-data" data-line-start="45" data-line-end="46"><strong>Venta</strong>: La habilidad para vender ideas y productos.</li>
+<li class="has-line-data" data-line-start="46" data-line-end="47"><strong>Liderazgo</strong>: Saber guiar y motivar a un equipo.</li>
+<li class="has-line-data" data-line-start="47" data-line-end="49"><strong>Trabajo en Equipo</strong>: Colaborar eficazmente con otros.</li>
+</ul>
+<p class="has-line-data" data-line-start="49" data-line-end="50">Recuerda que el desarrollo de software no se trata solo del código. Detrás de cada código hay un negocio con clientes finales y dueños de producto que no siempre son técnicos. Trabajar con ellos requiere habilidades blandas para asegurar una comunicación efectiva y una colaboración exitosa.</p>
+<h3 class="code-line" data-line-start=52 data-line-end=53 ><a id="Explicacin_de_Widgets_en_Flutter_52"></a>Explicación de Widgets en Flutter</h3>
+<h4 class="code-line" data-line-start=54 data-line-end=55 ><a id="Introduccin_a_Column_y_Row_54"></a>Introducción a Column y Row</h4>
+<p class="has-line-data" data-line-start="56" data-line-end="57">En Flutter, hay widgets esenciales para la disposición de elementos en la interfaz de usuario. <strong>Column</strong> y <strong>Row</strong> son dos de los más utilizados:</p>
+<ul>
+<li class="has-line-data" data-line-start="58" data-line-end="59"><strong>Column</strong>: Organiza los elementos verticalmente, uno encima del otro.</li>
+<li class="has-line-data" data-line-start="59" data-line-end="61"><strong>Row</strong>: Organiza los elementos horizontalmente, uno al lado del otro.</li>
+</ul>
+<h4 class="code-line" data-line-start=61 data-line-end=62 ><a id="Ejemplo_Prctico_61"></a>Ejemplo Práctico</h4>
+<p class="has-line-data" data-line-start="63" data-line-end="64">Para ilustrar la diferencia, supongamos que cambiamos el widget <strong>Column</strong> por un <strong>Row</strong>. Al ejecutar la aplicación, el texto y otros elementos se reorganizarán horizontalmente en lugar de verticalmente.</p>
+<h5 class="code-line" data-line-start=65 data-line-end=66 ><a id="Ejemplo_de_Cdigo_65"></a>Ejemplo de Código</h5>
+<ol>
+<li class="has-line-data" data-line-start="67" data-line-end="77">
+<p class="has-line-data" data-line-start="67" data-line-end="68"><strong>Código Original</strong>:</p>
+<pre><code class="has-line-data" data-line-start="69" data-line-end="76" class="language-dart">Column(
+  children: &lt;Widget&gt;[
+    Text(<span class="hljs-string">'Texto'</span>),
+    <span class="hljs-comment">// Otros widgets</span>
+  ],
+)
+</code></pre>
+</li>
+<li class="has-line-data" data-line-start="77" data-line-end="87">
+<p class="has-line-data" data-line-start="77" data-line-end="78"><strong>Código Modificado</strong>:</p>
+<pre><code class="has-line-data" data-line-start="79" data-line-end="86" class="language-dart">Row(
+  children: &lt;Widget&gt;[
+    Text(<span class="hljs-string">'Texto'</span>),
+    <span class="hljs-comment">// Otros widgets</span>
+  ],
+)
+</code></pre>
+</li>
+</ol>
+<h4 class="code-line" data-line-start=87 data-line-end=88 ><a id="Cambios_en_la_Alineacin_87"></a>Cambios en la Alineación</h4>
+<p class="has-line-data" data-line-start="89" data-line-end="90">Al cambiar el widget de <strong>Column</strong> a <strong>Row</strong>, los elementos se alinean horizontalmente. Si quitamos el widget de texto del <strong>Center</strong> y ejecutamos la aplicación nuevamente, el texto se alineará en la parte superior de la pantalla.</p>
+<h5 class="code-line" data-line-start=91 data-line-end=92 ><a id="Propiedad_MainAxisAlignment_91"></a>Propiedad <code>MainAxisAlignment</code></h5>
+<p class="has-line-data" data-line-start="93" data-line-end="94">El widget <strong>Row</strong> tiene una propiedad llamada <code>MainAxisAlignment</code> que controla la alineación de los elementos en el eje principal (horizontal en este caso). Puedes ajustar esta propiedad para cambiar la alineación:</p>
+<ul>
+<li class="has-line-data" data-line-start="95" data-line-end="96"><strong>Center</strong>: Centra los elementos en el eje principal.</li>
+<li class="has-line-data" data-line-start="96" data-line-end="97"><strong>Start</strong>: Alinea los elementos al principio del eje principal.</li>
+<li class="has-line-data" data-line-start="97" data-line-end="99"><strong>End</strong>: Alinea los elementos al final del eje principal.</li>
+</ul>
+<h5 class="code-line" data-line-start=99 data-line-end=100 ><a id="Ejemplo_99"></a>Ejemplo</h5>
+<pre><code class="has-line-data" data-line-start="102" data-line-end="110" class="language-dart">Row(
+  mainAxisAlignment: MainAxisAlignment.start, <span class="hljs-comment">// Cambia a start, center o end</span>
+  children: &lt;Widget&gt;[
+    Text(<span class="hljs-string">'Texto'</span>),
+    <span class="hljs-comment">// Otros widgets</span>
+  ],
+)
+</code></pre>
+<h4 class="code-line" data-line-start=111 data-line-end=112 ><a id="Consejos_para_Trabajar_con_Propiedades_111"></a>Consejos para Trabajar con Propiedades</h4>
+<p class="has-line-data" data-line-start="113" data-line-end="114">No te preocupes si algunas propiedades parecen confusas al principio. Algunas son obligatorias y otras opcionales. Con el tiempo y la práctica, te familiarizarás con ellas y comprenderás cómo utilizarlas para mejorar tus diseños.</p>
+<p class="has-line-data" data-line-start="115" data-line-end="116">Estas herramientas y propiedades te permitirán personalizar la interfaz de tus aplicaciones y crear diseños más sofisticados en Flutter.</p>
+<h3 class="code-line" data-line-start=117 data-line-end=118 ><a id="Introduccin_a_la_Terminal_para_Desarrolladores_117"></a>Introducción a la Terminal para Desarrolladores</h3>
+<h4 class="code-line" data-line-start=119 data-line-end=120 ><a id="Qu_es_la_Terminal_119"></a>¿Qué es la Terminal?</h4>
+<p class="has-line-data" data-line-start="121" data-line-end="122">Como desarrollador de software, es crucial familiarizarse con la <strong>terminal</strong> y algunos comandos básicos. Esto te ayudará a sentirte más cómodo con la instalación de programas y a evitar que te asustes al enfrentarte a comandos o configuraciones nuevas.</p>
+<h4 class="code-line" data-line-start=123 data-line-end=124 ><a id="Abrir_la_Terminal_123"></a>Abrir la Terminal</h4>
+<ul>
+<li class="has-line-data" data-line-start="125" data-line-end="126"><strong>En Mac</strong>: Presiona <code>Command</code> + <code>Espacio</code> para abrir la búsqueda Spotlight, luego escribe “Terminal” y selecciona la aplicación.</li>
+<li class="has-line-data" data-line-start="126" data-line-end="128"><strong>En Windows</strong>: Utiliza <code>Ctrl</code> + <code>Espacio</code> para abrir el menú de búsqueda, luego busca “Terminal” o “Símbolo del sistema”. Si ves algo como “bash” o diferentes nombres, no te preocupes; la funcionalidad básica es la misma.</li>
+</ul>
+<h4 class="code-line" data-line-start=128 data-line-end=129 ><a id="Configuracin_Inicial_128"></a>Configuración Inicial</h4>
+<ul>
+<li class="has-line-data" data-line-start="130" data-line-end="135">
+<p class="has-line-data" data-line-start="130" data-line-end="131"><strong>Ajustes de la Terminal</strong>: La apariencia de la terminal puede variar según el sistema operativo. Si la terminal se ve diferente a lo que esperas, no te preocupes. Puedes ajustar la configuración según tus preferencias.</p>
+<ul>
+<li class="has-line-data" data-line-start="132" data-line-end="133"><strong>En Mac</strong>: Puedes cambiar el estilo y los colores de la terminal en “Terminal” &gt; “Preferencias”.</li>
+<li class="has-line-data" data-line-start="133" data-line-end="135"><strong>En Windows</strong>: Puedes ajustar la apariencia en “Configuración” &gt; “Personalización” &gt; “Colores” o en las opciones de la terminal.</li>
+</ul>
+</li>
+<li class="has-line-data" data-line-start="135" data-line-end="137">
+<p class="has-line-data" data-line-start="135" data-line-end="136"><strong>Ejemplo de Configuración</strong>: Personalmente, prefiero un estilo llamado “Homebrew”. Este es solo un ejemplo y puedes elegir el estilo que te resulte más cómodo.</p>
+</li>
+</ul>
+<h4 class="code-line" data-line-start=137 data-line-end=138 ><a id="Primeros_Pasos_137"></a>Primeros Pasos</h4>
+<p class="has-line-data" data-line-start="139" data-line-end="140">Es normal sentirse intimidado al principio. Recuerda que la terminal es una herramienta poderosa que te permitirá ejecutar comandos y gestionar tu entorno de desarrollo de manera eficiente.</p>
+<ul>
+<li class="has-line-data" data-line-start="141" data-line-end="143">
+<p class="has-line-data" data-line-start="141" data-line-end="142"><strong>No Te Asustes</strong>: Si ves comandos o configuraciones que no entiendes, tómalo con calma. A medida que te familiarices más con la terminal, te sentirás más cómodo.</p>
+</li>
+<li class="has-line-data" data-line-start="143" data-line-end="145">
+<p class="has-line-data" data-line-start="143" data-line-end="144"><strong>Práctica</strong>: La mejor manera de aprender es practicando. Ejecuta algunos comandos básicos para familiarizarte con la interfaz.</p>
+</li>
+</ul>
+<h4 class="code-line" data-line-start=145 data-line-end=146 ><a id="Conclusin_145"></a>Conclusión</h4>
+<p class="has-line-data" data-line-start="147" data-line-end="148">La terminal puede parecer intimidante al principio, pero es una herramienta esencial para los desarrolladores. Familiarízate con ella y con los comandos básicos para facilitar tus tareas y configuraciones futuras.</p>
+<h3 class="code-line" data-line-start=149 data-line-end=150 ><a id="Instalacin_del_Flutter_SDK_149"></a>Instalación del Flutter SDK</h3>
+<h4 class="code-line" data-line-start=151 data-line-end=152 ><a id="Herramientas_Necesarias_151"></a>Herramientas Necesarias</h4>
+<ol>
+<li class="has-line-data" data-line-start="153" data-line-end="155">
+<p class="has-line-data" data-line-start="153" data-line-end="154"><strong>Android Studio</strong>: Aunque no lo necesitaremos inicialmente, se utiliza para correr emuladores de Android. Sin embargo, nuestro entorno de desarrollo principal será <strong>Visual Studio Code</strong>.</p>
+</li>
+<li class="has-line-data" data-line-start="155" data-line-end="157">
+<p class="has-line-data" data-line-start="155" data-line-end="156"><strong>Visual Studio Code</strong>: Es el editor de código que utilizaremos para desarrollar aplicaciones con Flutter.</p>
+</li>
+</ol>
+<h4 class="code-line" data-line-start=157 data-line-end=158 ><a id="Instalacin_del_Flutter_SDK_157"></a>Instalación del Flutter SDK</h4>
+<p class="has-line-data" data-line-start="159" data-line-end="160">El <strong>Flutter SDK</strong> es el <strong>kit de desarrollo de software (SDK)</strong> necesario para crear aplicaciones con Flutter. No te dejes intimidar por la terminología; el proceso es bastante sencillo.</p>
+<h5 class="code-line" data-line-start=161 data-line-end=162 ><a id="Mtodos_de_Instalacin_161"></a>Métodos de Instalación</h5>
+<p class="has-line-data" data-line-start="163" data-line-end="164">Hay dos formas de instalar el Flutter SDK:</p>
+<ol>
+<li class="has-line-data" data-line-start="165" data-line-end="169">
+<p class="has-line-data" data-line-start="165" data-line-end="166"><strong>Con la Extensión de Flutter en Visual Studio Code</strong>:</p>
+<ul>
+<li class="has-line-data" data-line-start="166" data-line-end="167">Esto se puede hacer si ya tienes Visual Studio Code instalado.</li>
+<li class="has-line-data" data-line-start="167" data-line-end="169">Instala la extensión de Flutter desde el marketplace de extensiones de Visual Studio Code.</li>
+</ul>
+</li>
+<li class="has-line-data" data-line-start="169" data-line-end="172">
+<p class="has-line-data" data-line-start="169" data-line-end="170"><strong>A través de la Terminal</strong>:</p>
+<ul>
+<li class="has-line-data" data-line-start="170" data-line-end="172">A continuación, te guiaré a través del proceso de instalación utilizando la terminal.</li>
+</ul>
+</li>
+</ol>
+<h5 class="code-line" data-line-start=172 data-line-end=173 ><a id="Pasos_para_Descargar_e_Instalar_el_Flutter_SDK_172"></a>Pasos para Descargar e Instalar el Flutter SDK</h5>
+<ol>
+<li class="has-line-data" data-line-start="174" data-line-end="179">
+<p class="has-line-data" data-line-start="174" data-line-end="175"><strong>Descargar el Flutter SDK</strong>:</p>
+<ul>
+<li class="has-line-data" data-line-start="175" data-line-end="176">Visita la página de descargas de Flutter en <a href="https://flutter.dev/docs/get-started/install">Flutter’s official website</a>.</li>
+<li class="has-line-data" data-line-start="176" data-line-end="177">Selecciona la versión adecuada para tu sistema operativo (macOS, Windows, Linux).</li>
+<li class="has-line-data" data-line-start="177" data-line-end="179">En el caso de macOS, elige la versión correspondiente a tu procesador (Intel o Apple Silicon).</li>
+</ul>
+</li>
+<li class="has-line-data" data-line-start="179" data-line-end="183">
+<p class="has-line-data" data-line-start="179" data-line-end="180"><strong>Preparar la Instalación</strong>:</p>
+<ul>
+<li class="has-line-data" data-line-start="180" data-line-end="181">Una vez descargado el archivo comprimido del SDK, ubícalo en el directorio de descargas.</li>
+<li class="has-line-data" data-line-start="181" data-line-end="183">Crea una carpeta para instalar Flutter, por ejemplo, una carpeta llamada <code>development</code>.</li>
+</ul>
+</li>
+<li class="has-line-data" data-line-start="183" data-line-end="190">
+<p class="has-line-data" data-line-start="183" data-line-end="184"><strong>Descomprimir el Archivo</strong>:</p>
+<ul>
+<li class="has-line-data" data-line-start="184" data-line-end="185">Extrae el archivo comprimido en la carpeta <code>development</code> para mantener el SDK organizado.</li>
+<li class="has-line-data" data-line-start="185" data-line-end="190">El comando para descomprimir en la terminal puede ser similar a:<pre><code class="has-line-data" data-line-start="187" data-line-end="189" class="language-bash">tar xf ~/Downloads/flutter_macos_&lt;version&gt;-stable.zip -C ~/development
+</code></pre>
+</li>
+</ul>
+</li>
+<li class="has-line-data" data-line-start="190" data-line-end="197">
+<p class="has-line-data" data-line-start="190" data-line-end="191"><strong>Actualizar el Path</strong>:</p>
+<ul>
+<li class="has-line-data" data-line-start="191" data-line-end="192">Asegúrate de que la carpeta <code>flutter/bin</code> esté en tu PATH para que puedas ejecutar los comandos de Flutter desde cualquier terminal.</li>
+<li class="has-line-data" data-line-start="192" data-line-end="197">Puedes añadir Flutter al PATH añadiendo la siguiente línea a tu archivo de configuración del shell (<code>.bashrc</code>, <code>.zshrc</code>, etc.):<pre><code class="has-line-data" data-line-start="194" data-line-end="196" class="language-bash"><span class="hljs-built_in">export</span> PATH=<span class="hljs-string">"<span class="hljs-variable">$PATH</span>:`&lt;ruta-a-tu-carpeta&gt;/development/flutter/bin`"</span>
+</code></pre>
+</li>
+</ul>
+</li>
+<li class="has-line-data" data-line-start="197" data-line-end="203">
+<p class="has-line-data" data-line-start="197" data-line-end="198"><strong>Verificar la Instalación</strong>:</p>
+<ul>
+<li class="has-line-data" data-line-start="198" data-line-end="203">Ejecuta el siguiente comando en la terminal para verificar que Flutter está correctamente instalado:<pre><code class="has-line-data" data-line-start="200" data-line-end="202" class="language-bash">flutter --version
+</code></pre>
+</li>
+</ul>
+</li>
+</ol>
+<p class="has-line-data" data-line-start="203" data-line-end="204">Con estos pasos, deberías tener Flutter SDK instalado y listo para comenzar a desarrollar aplicaciones.</p>
+<h3 class="code-line" data-line-start=206 data-line-end=207 ><a id="Verificacin_e_Instalacin_de_Extensiones_en_Visual_Studio_Code_206"></a>Verificación e Instalación de Extensiones en Visual Studio Code</h3>
+<h4 class="code-line" data-line-start=208 data-line-end=209 ><a id="Verificacin_de_la_Instalacin_de_Flutter_208"></a>Verificación de la Instalación de Flutter</h4>
+<ol>
+<li class="has-line-data" data-line-start="210" data-line-end="213">
+<p class="has-line-data" data-line-start="210" data-line-end="211"><strong>Comprobar la Ubicación de Flutter</strong>:</p>
+<ul>
+<li class="has-line-data" data-line-start="211" data-line-end="213">Usa el comando <code>which flutter</code> en la terminal para verificar la ubicación actual de Flutter. Esto te ayudará a asegurarte de que Flutter está instalado correctamente y que solo se encuentra en el directorio que especificaste (<code>development/flutter</code> en este caso).</li>
+</ul>
+</li>
+<li class="has-line-data" data-line-start="213" data-line-end="216">
+<p class="has-line-data" data-line-start="213" data-line-end="214"><strong>Verificar la Instalación con Flutter Doctor</strong>:</p>
+<ul>
+<li class="has-line-data" data-line-start="214" data-line-end="216">Ejecuta el comando <code>flutter doctor</code> para verificar que Flutter está correctamente instalado y configurado. Este comando te informará sobre la configuración de Flutter y cualquier problema con las herramientas necesarias (Android Studio, Xcode, Chrome, VS Code, etc.).</li>
+</ul>
+</li>
+</ol>
+<h4 class="code-line" data-line-start=216 data-line-end=217 ><a id="Configuracin_de_Visual_Studio_Code_216"></a>Configuración de Visual Studio Code</h4>
+<ol>
+<li class="has-line-data" data-line-start="218" data-line-end="221">
+<p class="has-line-data" data-line-start="218" data-line-end="219"><strong>Abrir Visual Studio Code</strong>:</p>
+<ul>
+<li class="has-line-data" data-line-start="219" data-line-end="221">Abre Visual Studio Code. Si ya estaba abierto, simplemente asegúrate de que esté actualizado y listo para trabajar.</li>
+</ul>
+</li>
+<li class="has-line-data" data-line-start="221" data-line-end="228">
+<p class="has-line-data" data-line-start="221" data-line-end="222"><strong>Instalar Extensiones Necesarias</strong>:</p>
+<ul>
+<li class="has-line-data" data-line-start="222" data-line-end="223">Ve al menú de <strong>Extensiones</strong> en el lado izquierdo de Visual Studio Code.</li>
+<li class="has-line-data" data-line-start="223" data-line-end="226">Busca e instala las siguientes extensiones esenciales para el desarrollo con Flutter:
+<ul>
+<li class="has-line-data" data-line-start="224" data-line-end="225"><strong>Flutter</strong>: Instala la extensión de Flutter desde el marketplace de extensiones. Esto te proporcionará herramientas y funcionalidades específicas para Flutter.</li>
+<li class="has-line-data" data-line-start="225" data-line-end="226"><strong>Dart</strong>: La extensión de Dart es necesaria para el desarrollo en Flutter y proporciona soporte para el lenguaje Dart.</li>
+</ul>
+</li>
+<li class="has-line-data" data-line-start="226" data-line-end="228">Si alguna de estas extensiones ya está instalada, considera desinstalarla y volver a instalarla para asegurarte de que estás usando la versión más reciente.</li>
+</ul>
+</li>
+<li class="has-line-data" data-line-start="228" data-line-end="231">
+<p class="has-line-data" data-line-start="228" data-line-end="229"><strong>Reiniciar Visual Studio Code</strong>:</p>
+<ul>
+<li class="has-line-data" data-line-start="229" data-line-end="231">Después de instalar las extensiones, reinicia Visual Studio Code para asegurarte de que todos los cambios se apliquen correctamente.</li>
+</ul>
+</li>
+<li class="has-line-data" data-line-start="231" data-line-end="234">
+<p class="has-line-data" data-line-start="231" data-line-end="232"><strong>Recomendaciones Adicionales</strong>:</p>
+<ul>
+<li class="has-line-data" data-line-start="232" data-line-end="234">Asegúrate de instalar otras extensiones útiles que puedas necesitar según tu flujo de trabajo. Algunas extensiones recomendadas incluyen herramientas de formato de código, control de versiones, y depuración.</li>
+</ul>
+</li>
+</ol>
+<p class="has-line-data" data-line-start="234" data-line-end="235">Con estos pasos, deberías tener tu entorno de desarrollo configurado y listo para comenzar a trabajar en tus proyectos con Flutter. ¡Buena suerte!</p>
+<h3 class="code-line" data-line-start=237 data-line-end=238 ><a id="Verificacin_y_Uso_de_Flutter_en_Visual_Studio_Code_237"></a>Verificación y Uso de Flutter en Visual Studio Code</h3>
+<h4 class="code-line" data-line-start=239 data-line-end=240 ><a id="Verificacin_de_la_Instalacin_239"></a>Verificación de la Instalación</h4>
+<ol>
+<li class="has-line-data" data-line-start="241" data-line-end="244">
+<p class="has-line-data" data-line-start="241" data-line-end="242"><strong>Usar <code>flutter doctor</code></strong>:</p>
+<ul>
+<li class="has-line-data" data-line-start="242" data-line-end="244">En la terminal o en la consola de Visual Studio Code, puedes ejecutar el comando <code>flutter doctor</code> para revisar el estado de tu instalación de Flutter. Este comando proporciona un resumen de la configuración actual y detecta posibles problemas con tu entorno de desarrollo.</li>
+</ul>
+</li>
+<li class="has-line-data" data-line-start="244" data-line-end="247">
+<p class="has-line-data" data-line-start="244" data-line-end="245"><strong>Problemas Comunes</strong>:</p>
+<ul>
+<li class="has-line-data" data-line-start="245" data-line-end="247">Si ves mensajes relacionados con múltiples rutas de instalación, es posible que tengas problemas con configuraciones anteriores. Asegúrate de que solo hay una instalación activa de Flutter en tu sistema.</li>
+</ul>
+</li>
+</ol>
+<h4 class="code-line" data-line-start=247 data-line-end=248 ><a id="Uso_de_la_Consola_en_Visual_Studio_Code_247"></a>Uso de la Consola en Visual Studio Code</h4>
+<ol>
+<li class="has-line-data" data-line-start="249" data-line-end="252">
+<p class="has-line-data" data-line-start="249" data-line-end="250"><strong>Consola de Depuración</strong>:</p>
+<ul>
+<li class="has-line-data" data-line-start="250" data-line-end="252">La consola de depuración en Visual Studio Code muestra todo lo que se imprime desde el código en ejecución. Aquí puedes ver mensajes de log, errores y otros datos importantes.</li>
+</ul>
+</li>
+<li class="has-line-data" data-line-start="252" data-line-end="279">
+<p class="has-line-data" data-line-start="252" data-line-end="253"><strong>Ejemplo de Código</strong>:</p>
+<ul>
+<li class="has-line-data" data-line-start="253" data-line-end="279">A continuación, se muestra un ejemplo básico de código en Flutter que utiliza un <code>Scaffold</code>, un <code>AppBar</code>, un <code>Center</code>, y una <code>Column</code>:<pre><code class="has-line-data" data-line-start="255" data-line-end="278" class="language-dart">Scaffold(
+  appBar: AppBar(
+    title: Text(<span class="hljs-string">'Mi Aplicación'</span>),
+  ),
+  body: Center(
+    child: Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: &lt;Widget&gt;[
+        Text(<span class="hljs-string">'Valor actual:'</span>),
+        Text(
+          <span class="hljs-string">'$_counter'</span>, <span class="hljs-comment">// Valor de la variable contador</span>
+          style: Theme.of(context).textTheme.headline4,
+        ),
+      ],
+    ),
+  ),
+  floatingActionButton: FloatingActionButton(
+    onPressed: _incrementCounter,
+    tooltip: <span class="hljs-string">'Incrementar'</span>,
+    child: Icon(Icons.add),
+  ),
+)
+</code></pre>
+</li>
+</ul>
+</li>
+<li class="has-line-data" data-line-start="279" data-line-end="291">
+<p class="has-line-data" data-line-start="279" data-line-end="280"><strong>Agregar Mensajes de Depuración</strong>:</p>
+<ul>
+<li class="has-line-data" data-line-start="280" data-line-end="289">Para depurar tu aplicación y ver cómo cambian los valores, puedes agregar declaraciones <code>print</code> en el código. Por ejemplo:<pre><code class="has-line-data" data-line-start="282" data-line-end="289" class="language-dart"><span class="hljs-keyword">void</span> _incrementCounter() {
+  setState(() {
+    _counter++;
+    <span class="hljs-built_in">print</span>(<span class="hljs-string">'Incrementing Counter: $_counter'</span>); <span class="hljs-comment">// Mensaje de depuración</span>
+  });
+}
+</code></pre>
+</li>
+<li class="has-line-data" data-line-start="289" data-line-end="291">Aquí, el mensaje <code>Incrementing Counter: $_counter</code> se imprimirá en la consola cada vez que el contador se incremente.</li>
+</ul>
+</li>
+<li class="has-line-data" data-line-start="291" data-line-end="294">
+<p class="has-line-data" data-line-start="291" data-line-end="292"><strong>Uso de Sugerencias</strong>:</p>
+<ul>
+<li class="has-line-data" data-line-start="292" data-line-end="294">Visual Studio Code ofrece sugerencias mientras escribes código. Puedes usar la tecla <code>Tab</code> para aceptar sugerencias y completar el código más rápidamente.</li>
+</ul>
+</li>
+</ol>
+<h4 class="code-line" data-line-start=294 data-line-end=295 ><a id="Guardar_y_Ejecutar_el_Cdigo_294"></a>Guardar y Ejecutar el Código</h4>
+<ol>
+<li class="has-line-data" data-line-start="296" data-line-end="299">
+<p class="has-line-data" data-line-start="296" data-line-end="297"><strong>Guardar Cambios</strong>:</p>
+<ul>
+<li class="has-line-data" data-line-start="297" data-line-end="299">Utiliza el comando <code>Command + S</code> (en Mac) o <code>Ctrl + S</code> (en Windows) para guardar los cambios en tu archivo de código.</li>
+</ul>
+</li>
+<li class="has-line-data" data-line-start="299" data-line-end="302">
+<p class="has-line-data" data-line-start="299" data-line-end="300"><strong>Ejecutar la Aplicación</strong>:</p>
+<ul>
+<li class="has-line-data" data-line-start="300" data-line-end="302">Después de guardar, puedes ver los resultados de tus cambios en la consola de depuración y en la interfaz de usuario de tu aplicación.</li>
+</ul>
+</li>
+</ol>
+<p class="has-line-data" data-line-start="302" data-line-end="303">A medida que avances, te familiarizarás más con estas herramientas y técnicas, lo que te permitirá depurar y desarrollar tus aplicaciones Flutter de manera más eficiente.</p>
+<h3 class="code-line" data-line-start=305 data-line-end=306 ><a id="Introduccin_al_Debugging_y_Personalizacin_en_Flutter_305"></a>Introducción al Debugging y Personalización en Flutter</h3>
+<h4 class="code-line" data-line-start=307 data-line-end=308 ><a id="Debugging_en_Flutter_307"></a>Debugging en Flutter</h4>
+<ol>
+<li class="has-line-data" data-line-start="309" data-line-end="312">
+<p class="has-line-data" data-line-start="309" data-line-end="310"><strong>¿Qué es el Debugging?</strong></p>
+<ul>
+<li class="has-line-data" data-line-start="310" data-line-end="312">El debugging es el proceso de encontrar y corregir errores en tu código. Te permite pausar la ejecución de la aplicación en puntos específicos para inspeccionar el estado de las variables y el flujo del programa.</li>
+</ul>
+</li>
+<li class="has-line-data" data-line-start="312" data-line-end="315">
+<p class="has-line-data" data-line-start="312" data-line-end="313"><strong>Habilitar el Debugging:</strong></p>
+<ul>
+<li class="has-line-data" data-line-start="313" data-line-end="315">Para depurar, debes ejecutar la aplicación en modo de depuración. En Visual Studio Code, puedes iniciar la depuración usando el botón de inicio de depuración o el atajo <code>F5</code>. Esto te permitirá establecer puntos de interrupción (<code>breakpoints</code>) y examinar el estado de la aplicación.</li>
+</ul>
+</li>
+</ol>
+<h4 class="code-line" data-line-start=315 data-line-end=316 ><a id="Primeros_Pasos_con_Flutter_315"></a>Primeros Pasos con Flutter</h4>
+<ol>
+<li class="has-line-data" data-line-start="317" data-line-end="320">
+<p class="has-line-data" data-line-start="317" data-line-end="318"><strong>Aplicación Básica:</strong></p>
+<ul>
+<li class="has-line-data" data-line-start="318" data-line-end="320">Al iniciar tu aplicación, verás una pantalla blanca con “Hola Mundo” en el centro, gracias al widget <code>Center</code>. Esta es una configuración básica para comenzar.</li>
+</ul>
+</li>
+<li class="has-line-data" data-line-start="320" data-line-end="323">
+<p class="has-line-data" data-line-start="320" data-line-end="321"><strong>Personalización de la Aplicación:</strong></p>
+<ul>
+<li class="has-line-data" data-line-start="321" data-line-end="323">Para enriquecer tu aplicación de ejemplo, puedes explorar diferentes aspectos como cambiar la fuente, agregar imágenes y experimentar con el diseño (<code>layout</code>).</li>
+</ul>
+</li>
+</ol>
+<h4 class="code-line" data-line-start=323 data-line-end=324 ><a id="Cambiar_la_Fuente_323"></a>Cambiar la Fuente</h4>
+<ol>
+<li class="has-line-data" data-line-start="325" data-line-end="328">
+<p class="has-line-data" data-line-start="325" data-line-end="326"><strong>Seleccionar y Descargar una Fuente:</strong></p>
+<ul>
+<li class="has-line-data" data-line-start="326" data-line-end="328">Puedes elegir fuentes gratuitas desde <a href="https://fonts.google.com/">Google Fonts</a>. Por ejemplo, selecciona una fuente que te guste, como la que se muestra en el ejemplo.</li>
+</ul>
+</li>
+<li class="has-line-data" data-line-start="328" data-line-end="331">
+<p class="has-line-data" data-line-start="328" data-line-end="329"><strong>Descargar la Fuente:</strong></p>
+<ul>
+<li class="has-line-data" data-line-start="329" data-line-end="331">Haz clic en “Get Font” para descargar el archivo de la fuente. El archivo se guardará en la carpeta de Descargas.</li>
+</ul>
+</li>
+<li class="has-line-data" data-line-start="331" data-line-end="343">
+<p class="has-line-data" data-line-start="331" data-line-end="332"><strong>Agregar la Fuente a tu Proyecto Flutter:</strong></p>
+<ul>
+<li class="has-line-data" data-line-start="332" data-line-end="333">Mueve el archivo de la fuente descargada a una carpeta dentro de tu proyecto Flutter, por ejemplo, <code>assets/fonts</code>.</li>
+<li class="has-line-data" data-line-start="333" data-line-end="341">Actualiza el archivo <code>pubspec.yaml</code> para incluir la fuente:<pre><code class="has-line-data" data-line-start="335" data-line-end="341" class="language-yaml">flutter:
+  fonts:
+    - family: NombreDeLaFuente
+      fonts:
+        - asset: assets/fonts/nombre_de_la_fuente.ttf
+</code></pre>
+</li>
+<li class="has-line-data" data-line-start="341" data-line-end="343">Asegúrate de reemplazar <code>NombreDeLaFuente</code> y <code>nombre_de_la_fuente.ttf</code> con los valores correspondientes.</li>
+</ul>
+</li>
+<li class="has-line-data" data-line-start="343" data-line-end="352">
+<p class="has-line-data" data-line-start="343" data-line-end="344"><strong>Aplicar la Fuente en tu Aplicación:</strong></p>
+<ul>
+<li class="has-line-data" data-line-start="344" data-line-end="352">Utiliza la fuente en tu aplicación modificando el widget <code>Text</code>:<pre><code class="has-line-data" data-line-start="346" data-line-end="351" class="language-dart">Text(
+  <span class="hljs-string">'Hola Mundo'</span>,
+  style: TextStyle(fontFamily: <span class="hljs-string">'NombreDeLaFuente'</span>),
+)
+</code></pre>
+</li>
+</ul>
+</li>
+</ol>
+<h4 class="code-line" data-line-start=352 data-line-end=353 ><a id="Agregar_Imgenes_y_Layouts_352"></a>Agregar Imágenes y Layouts</h4>
+<ol>
+<li class="has-line-data" data-line-start="354" data-line-end="366">
+<p class="has-line-data" data-line-start="354" data-line-end="355"><strong>Agregar Imágenes:</strong></p>
+<ul>
+<li class="has-line-data" data-line-start="355" data-line-end="361">Coloca las imágenes en una carpeta dentro de <code>assets</code> y actualiza <code>pubspec.yaml</code> para incluirlas:<pre><code class="has-line-data" data-line-start="357" data-line-end="361" class="language-yaml">flutter:
+  assets:
+    - assets/images/
+</code></pre>
+</li>
+<li class="has-line-data" data-line-start="361" data-line-end="366">Utiliza el widget <code>Image</code> para mostrar la imagen en tu aplicación:<pre><code class="has-line-data" data-line-start="363" data-line-end="365" class="language-dart">Image.asset(<span class="hljs-string">'assets/images/mi_imagen.png'</span>)
+</code></pre>
+</li>
+</ul>
+</li>
+<li class="has-line-data" data-line-start="366" data-line-end="369">
+<p class="has-line-data" data-line-start="366" data-line-end="367"><strong>Experimentar con Layouts:</strong></p>
+<ul>
+<li class="has-line-data" data-line-start="367" data-line-end="369">Explora diferentes widgets y diseños para organizar los elementos en tu aplicación, como <code>Row</code>, <code>Column</code>, <code>Stack</code>, y <code>Grid</code>.</li>
+</ul>
+</li>
+</ol>
+<p class="has-line-data" data-line-start="369" data-line-end="370">Con estos pasos, habrás configurado un entorno básico para el desarrollo en Flutter y estarás listo para experimentar con personalizaciones y mejoras en tu aplicación.</p>
+<h3 class="code-line" data-line-start=371 data-line-end=372 ><a id="Mejora_de_la_Legibilidad_del_Cdigo_y_Uso_de_Imgenes_en_Flutter_371"></a>Mejora de la Legibilidad del Código y Uso de Imágenes en Flutter</h3>
+<h4 class="code-line" data-line-start=373 data-line-end=374 ><a id="Mejora_de_la_Legibilidad_del_Cdigo_373"></a>Mejora de la Legibilidad del Código</h4>
+<ol>
+<li class="has-line-data" data-line-start="375" data-line-end="386">
+<p class="has-line-data" data-line-start="375" data-line-end="376"><strong>Uso de Comas al Final de las Líneas (Trailing Commas)</strong>:</p>
+<ul>
+<li class="has-line-data" data-line-start="376" data-line-end="384">Para mejorar la legibilidad del código, es útil agregar comas al final de las líneas en listas y mapas. Esto facilita la lectura y la edición del código. Por ejemplo:<pre><code class="has-line-data" data-line-start="378" data-line-end="384" class="language-dart"><span class="hljs-keyword">final</span> myList = [
+  <span class="hljs-string">'item1'</span>,
+  <span class="hljs-string">'item2'</span>,
+  <span class="hljs-string">'item3'</span>,
+];
+</code></pre>
+</li>
+<li class="has-line-data" data-line-start="384" data-line-end="386">Aquí, la coma después del último elemento permite agregar o reordenar elementos sin modificar la línea anterior.</li>
+</ul>
+</li>
+<li class="has-line-data" data-line-start="386" data-line-end="389">
+<p class="has-line-data" data-line-start="386" data-line-end="387"><strong>Separación de Líneas</strong>:</p>
+<ul>
+<li class="has-line-data" data-line-start="387" data-line-end="389">Si necesitas separar una línea larga en varias más cortas, puedes hacerlo agregando una coma y presionando <code>Cmd + S</code> para guardar. Esto hará que el código sea más fácil de leer y mantener.</li>
+</ul>
+</li>
+</ol>
+<h4 class="code-line" data-line-start=389 data-line-end=390 ><a id="Trabajo_con_Imgenes_en_Flutter_389"></a>Trabajo con Imágenes en Flutter</h4>
+<ol>
+<li class="has-line-data" data-line-start="391" data-line-end="408">
+<p class="has-line-data" data-line-start="391" data-line-end="392"><strong>Agregar Imágenes desde Assets</strong>:</p>
+<ul>
+<li class="has-line-data" data-line-start="392" data-line-end="395">
+<p class="has-line-data" data-line-start="392" data-line-end="393"><strong>Paso 1: Preparar las Imágenes</strong>:</p>
+<ul>
+<li class="has-line-data" data-line-start="393" data-line-end="395">Descarga las imágenes que deseas usar y colócalas en una carpeta dentro de tu proyecto Flutter, por ejemplo, <code>assets/images</code>.</li>
+</ul>
+</li>
+<li class="has-line-data" data-line-start="395" data-line-end="402">
+<p class="has-line-data" data-line-start="395" data-line-end="396"><strong>Paso 2: Configurar <code>pubspec.yaml</code></strong>:</p>
+<ul>
+<li class="has-line-data" data-line-start="396" data-line-end="402">Abre el archivo <code>pubspec.yaml</code> y agrega la ruta a las imágenes en la sección de <code>assets</code>:<pre><code class="has-line-data" data-line-start="398" data-line-end="402" class="language-yaml">flutter:
+  assets:
+    - assets/images/mi_imagen.png
+</code></pre>
+</li>
+</ul>
+</li>
+<li class="has-line-data" data-line-start="402" data-line-end="408">
+<p class="has-line-data" data-line-start="402" data-line-end="403"><strong>Paso 3: Usar la Imagen en el Código</strong>:</p>
+<ul>
+<li class="has-line-data" data-line-start="403" data-line-end="408">Para mostrar la imagen en tu aplicación, usa el widget <code>Image.asset</code>:<pre><code class="has-line-data" data-line-start="405" data-line-end="407" class="language-dart">Image.asset(<span class="hljs-string">'assets/images/mi_imagen.png'</span>);
+</code></pre>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="has-line-data" data-line-start="408" data-line-end="418">
+<p class="has-line-data" data-line-start="408" data-line-end="409"><strong>Agregar Imágenes desde la Web</strong>:</p>
+<ul>
+<li class="has-line-data" data-line-start="409" data-line-end="412">
+<p class="has-line-data" data-line-start="409" data-line-end="410"><strong>Paso 1: Obtener la URL</strong>:</p>
+<ul>
+<li class="has-line-data" data-line-start="410" data-line-end="412">Copia la URL de la imagen que deseas mostrar.</li>
+</ul>
+</li>
+<li class="has-line-data" data-line-start="412" data-line-end="418">
+<p class="has-line-data" data-line-start="412" data-line-end="413"><strong>Paso 2: Usar la Imagen en el Código</strong>:</p>
+<ul>
+<li class="has-line-data" data-line-start="413" data-line-end="418">Para mostrar una imagen desde una URL, usa el widget <code>Image.network</code>:<pre><code class="has-line-data" data-line-start="415" data-line-end="417" class="language-dart">Image.network(<span class="hljs-string">'https://www.example.com/mi_imagen.png'</span>);
+</code></pre>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="has-line-data" data-line-start="418" data-line-end="437">
+<p class="has-line-data" data-line-start="418" data-line-end="419"><strong>Ejemplo Completo</strong>:</p>
+<ul>
+<li class="has-line-data" data-line-start="419" data-line-end="437">Aquí tienes un ejemplo de cómo usar tanto imágenes desde assets como desde la web en tu aplicación Flutter:<pre><code class="has-line-data" data-line-start="421" data-line-end="436" class="language-dart"><span class="hljs-annotation">@override</span>
+Widget build(BuildContext context) {
+  <span class="hljs-keyword">return</span> Scaffold(
+    appBar: AppBar(
+      title: Text(<span class="hljs-string">'Ejemplo de Imágenes'</span>),
+    ),
+    body: Column(
+      children: &lt;Widget&gt;[
+        Image.asset(<span class="hljs-string">'assets/images/mi_imagen.png'</span>),
+        Image.network(<span class="hljs-string">'https://www.example.com/mi_imagen.png'</span>),
+      ],
+    ),
+  );
+}
+</code></pre>
+</li>
+</ul>
+</li>
+</ol>
+<h4 class="code-line" data-line-start=437 data-line-end=438 ><a id="Resumen_437"></a>Resumen</h4>
+<ul>
+<li class="has-line-data" data-line-start="439" data-line-end="440"><strong>Mejora de Legibilidad</strong>: Usa comas al final de las líneas y separa líneas largas para mejorar la legibilidad del código.</li>
+<li class="has-line-data" data-line-start="440" data-line-end="442"><strong>Trabajo con Imágenes</strong>: Puedes agregar imágenes a tu aplicación desde archivos locales (assets) o desde una URL en la web. Configura los assets en <code>pubspec.yaml</code> y usa <code>Image.asset</code> o <code>Image.network</code> para mostrarlas en tu aplicación.</li>
+</ul>
+<h3 class="code-line" data-line-start=442 data-line-end=443 ><a id="Uso_de_Widgets_y_Personalizacin_en_Flutter_442"></a>Uso de Widgets y Personalización en Flutter</h3>
+<h4 class="code-line" data-line-start=444 data-line-end=445 ><a id="Envuelve_Widgets_con_Otros_Widgets_444"></a>Envuelve Widgets con Otros Widgets</h4>
+<ol>
+<li class="has-line-data" data-line-start="446" data-line-end="460">
+<p class="has-line-data" data-line-start="446" data-line-end="447"><strong>Envolver con un Widget:</strong></p>
+<ul>
+<li class="has-line-data" data-line-start="447" data-line-end="460">Para envolver un widget con otro widget, usa la función <strong>Wrap with Widget</strong> en tu IDE. Por ejemplo, si deseas envolver un widget con un <code>Positioned</code>, sigue estos pasos:
+<ul>
+<li class="has-line-data" data-line-start="448" data-line-end="449">Selecciona el widget que deseas envolver.</li>
+<li class="has-line-data" data-line-start="449" data-line-end="450">Elige la opción <strong>Wrap with Widget</strong> y escribe el nombre del widget, en este caso <code>Positioned</code>.</li>
+<li class="has-line-data" data-line-start="450" data-line-end="458">Asegúrate de especificar la posición deseada. Por ejemplo:<pre><code class="has-line-data" data-line-start="452" data-line-end="458" class="language-dart">Positioned(
+  top: <span class="hljs-number">100</span>, <span class="hljs-comment">// Distancia desde la parte superior</span>
+  left: <span class="hljs-number">50</span>, <span class="hljs-comment">// Distancia desde la parte izquierda</span>
+  child: YourWidget(),
+);
+</code></pre>
+</li>
+<li class="has-line-data" data-line-start="458" data-line-end="460">Ajusta los valores según tus necesidades. Puedes experimentar con diferentes posiciones y ver los cambios en tiempo real.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="has-line-data" data-line-start="460" data-line-end="470">
+<p class="has-line-data" data-line-start="460" data-line-end="461"><strong>Propiedades del <code>Positioned</code>:</strong></p>
+<ul>
+<li class="has-line-data" data-line-start="461" data-line-end="470">Puedes ajustar varias propiedades como <code>top</code>, <code>left</code>, <code>right</code>, <code>bottom</code> para ubicar el widget en la pantalla. Usa comas para separar las propiedades y guarda los cambios:<pre><code class="has-line-data" data-line-start="463" data-line-end="469" class="language-dart">Positioned(
+  top: <span class="hljs-number">200</span>,
+  left: <span class="hljs-number">50</span>,
+  child: YourWidget(),
+);
+</code></pre>
+</li>
+</ul>
+</li>
+</ol>
+<h4 class="code-line" data-line-start=470 data-line-end=471 ><a id="Personalizacin_de_Texto_470"></a>Personalización de Texto</h4>
+<ol>
+<li class="has-line-data" data-line-start="472" data-line-end="481">
+<p class="has-line-data" data-line-start="472" data-line-end="473"><strong>Espaciado de Letras (<code>letterSpacing</code>):</strong></p>
+<ul>
+<li class="has-line-data" data-line-start="473" data-line-end="481">Puedes cambiar el espaciado entre letras usando la propiedad <code>letterSpacing</code>. Por ejemplo:<pre><code class="has-line-data" data-line-start="475" data-line-end="480" class="language-dart">Text(
+  <span class="hljs-string">'Hello World'</span>,
+  style: TextStyle(letterSpacing: <span class="hljs-number">8</span>),
+);
+</code></pre>
+</li>
+</ul>
+</li>
+<li class="has-line-data" data-line-start="481" data-line-end="494">
+<p class="has-line-data" data-line-start="481" data-line-end="482"><strong>Organización del Código:</strong></p>
+<ul>
+<li class="has-line-data" data-line-start="482" data-line-end="494">Para mantener el código limpio y organizado, usa comas al final de las líneas y separa las propiedades en diferentes líneas si es necesario:<pre><code class="has-line-data" data-line-start="484" data-line-end="493" class="language-dart">Text(
+  <span class="hljs-string">'Hello World'</span>,
+  style: TextStyle(
+    letterSpacing: <span class="hljs-number">8</span>,
+    fontSize: <span class="hljs-number">24</span>,
+    fontWeight: FontWeight.bold,
+  ),
+);
+</code></pre>
+</li>
+</ul>
+</li>
+</ol>
+<h4 class="code-line" data-line-start=494 data-line-end=495 ><a id="Agregar_Imgenes_494"></a>Agregar Imágenes</h4>
+<ol>
+<li class="has-line-data" data-line-start="496" data-line-end="499">
+<p class="has-line-data" data-line-start="496" data-line-end="497"><strong>Agregar Imágenes desde Assets:</strong></p>
+<ul>
+<li class="has-line-data" data-line-start="497" data-line-end="499">Sigue los pasos anteriores para agregar imágenes desde la carpeta de assets. Asegúrate de tener las imágenes en la carpeta <code>assets/images</code> y referéncialas correctamente en <code>pubspec.yaml</code>.</li>
+</ul>
+</li>
+<li class="has-line-data" data-line-start="499" data-line-end="505">
+<p class="has-line-data" data-line-start="499" data-line-end="500"><strong>Agregar Imágenes desde la Web:</strong></p>
+<ul>
+<li class="has-line-data" data-line-start="500" data-line-end="505">Para mostrar una imagen desde una URL, usa el widget <code>Image.network</code>:<pre><code class="has-line-data" data-line-start="502" data-line-end="504" class="language-dart">Image.network(<span class="hljs-string">'https://example.com/mi_imagen.png'</span>);
+</code></pre>
+</li>
+</ul>
+</li>
+</ol>
+<h3 class="code-line" data-line-start=505 data-line-end=506 ><a id="Resumen_505"></a>Resumen</h3>
+<ul>
+<li class="has-line-data" data-line-start="507" data-line-end="508"><strong>Envuelve Widgets:</strong> Usa la función <strong>Wrap with Widget</strong> para agregar widgets adicionales, como <code>Positioned</code>, y ajustar sus propiedades.</li>
+<li class="has-line-data" data-line-start="508" data-line-end="509"><strong>Personalización de Texto:</strong> Modifica el espaciado de letras y organiza el código con comas al final de las líneas.</li>
+<li class="has-line-data" data-line-start="509" data-line-end="511"><strong>Agregar Imágenes:</strong> Usa <code>Image.asset</code> para imágenes locales y <code>Image.network</code> para imágenes desde la web.</li>
+</ul>
+<p class="has-line-data" data-line-start="511" data-line-end="512">Estas técnicas te ayudarán a personalizar y ajustar tus aplicaciones Flutter de manera más efectiva.</p>
+<h3 class="code-line" data-line-start=514 data-line-end=515 ><a id="Ajuste_de_Configuracin_en_Flutter_514"></a>Ajuste de Configuración en Flutter</h3>
+<h4 class="code-line" data-line-start=516 data-line-end=517 ><a id="Cambiar_el_Nombre_de_la_Aplicacin_en_Android_516"></a>Cambiar el Nombre de la Aplicación en Android</h4>
+<ol>
+<li class="has-line-data" data-line-start="518" data-line-end="530">
+<p class="has-line-data" data-line-start="518" data-line-end="519"><strong>Modificar el Nombre de la Aplicación:</strong></p>
+<ul>
+<li class="has-line-data" data-line-start="519" data-line-end="523">Abre el archivo <code>AndroidManifest.xml</code> ubicado en:<pre><code class="has-line-data" data-line-start="521" data-line-end="523">android/app/src/main/AndroidManifest.xml
+</code></pre>
+</li>
+<li class="has-line-data" data-line-start="523" data-line-end="530">Busca el atributo <code>android:label</code> dentro de la etiqueta <code>&lt;application&gt;</code>. Este atributo define el nombre que se muestra en el ícono de la aplicación. Cámbialo de “Hola Mundo” a “HOLA MUNDO” para que coincida con el formato de iOS.<pre><code class="has-line-data" data-line-start="525" data-line-end="529" class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-title">application</span>
+  <span class="hljs-attribute">android:label</span>=<span class="hljs-value">"HOLA MUNDO"</span>
+  <span class="hljs-attribute">...</span>&gt;</span>
+</code></pre>
+</li>
+</ul>
+</li>
+<li class="has-line-data" data-line-start="530" data-line-end="535">
+<p class="has-line-data" data-line-start="530" data-line-end="531"><strong>Actualizar y Ejecutar la Aplicación:</strong></p>
+<ul>
+<li class="has-line-data" data-line-start="531" data-line-end="532">Guarda los cambios en el archivo <code>AndroidManifest.xml</code>.</li>
+<li class="has-line-data" data-line-start="532" data-line-end="533">Cierra la aplicación si está en ejecución.</li>
+<li class="has-line-data" data-line-start="533" data-line-end="535">Vuelve a ejecutar la aplicación desde tu IDE. Asegúrate de estar parado en un archivo <code>.dart</code> antes de iniciar la ejecución.</li>
+</ul>
+</li>
+</ol>
+<h4 class="code-line" data-line-start=535 data-line-end=536 ><a id="Revisin_y_Ajustes_Finales_535"></a>Revisión y Ajustes Finales</h4>
+<ol>
+<li class="has-line-data" data-line-start="537" data-line-end="541">
+<p class="has-line-data" data-line-start="537" data-line-end="538"><strong>Verificar el Funcionamiento:</strong></p>
+<ul>
+<li class="has-line-data" data-line-start="538" data-line-end="539">Confirma que el nombre de la aplicación se haya actualizado correctamente tanto en Android como en iOS.</li>
+<li class="has-line-data" data-line-start="539" data-line-end="541">Asegúrate de que todos los cambios en la configuración se reflejen en la aplicación en ejecución.</li>
+</ul>
+</li>
+<li class="has-line-data" data-line-start="541" data-line-end="545">
+<p class="has-line-data" data-line-start="541" data-line-end="542"><strong>Próximos Pasos:</strong></p>
+<ul>
+<li class="has-line-data" data-line-start="542" data-line-end="543">Has aprendido a trabajar con fuentes personalizadas e imágenes, tanto locales como desde internet.</li>
+<li class="has-line-data" data-line-start="543" data-line-end="545">Has configurado y posicionado elementos en la interfaz de usuario utilizando <code>Stack</code> y otros widgets.</li>
+</ul>
+</li>
+<li class="has-line-data" data-line-start="545" data-line-end="549">
+<p class="has-line-data" data-line-start="545" data-line-end="546"><strong>Preparación para el Backend:</strong></p>
+<ul>
+<li class="has-line-data" data-line-start="546" data-line-end="547">Hasta ahora, has trabajado con la interfaz de usuario (UI) y ajustes básicos.</li>
+<li class="has-line-data" data-line-start="547" data-line-end="549">En las próximas secciones, comenzarás a integrar la lógica de la aplicación, como la interacción con botones, almacenamiento de datos y la conexión con el backend.</li>
+</ul>
+</li>
+</ol>
+<h3 class="code-line" data-line-start=549 data-line-end=550 ><a id="Resumen_549"></a>Resumen</h3>
+<ul>
+<li class="has-line-data" data-line-start="551" data-line-end="552"><strong>Cambios en Android:</strong> Modifica el nombre de la aplicación en <code>AndroidManifest.xml</code>.</li>
+<li class="has-line-data" data-line-start="552" data-line-end="553"><strong>Actualización y Ejecución:</strong> Guarda los cambios y vuelve a ejecutar la aplicación para verificar que los ajustes se apliquen.</li>
+<li class="has-line-data" data-line-start="553" data-line-end="555"><strong>Avance:</strong> Te has familiarizado con fuentes, imágenes y posicionamiento en Flutter. El próximo módulo abordará la lógica de la aplicación y la integración con el backend.</li>
+</ul>
+<h3 class="code-line" data-line-start=555 data-line-end=556 ><a id="Manipulacin_de_Botones_y_Contadores_en_Flutter_555"></a>Manipulación de Botones y Contadores en Flutter</h3>
+<h4 class="code-line" data-line-start=557 data-line-end=558 ><a id="Funcin_onPressed_de_un_Botn_557"></a>Función <code>onPressed</code> de un Botón</h4>
+<ol>
+<li class="has-line-data" data-line-start="559" data-line-end="568">
+<p class="has-line-data" data-line-start="559" data-line-end="560"><strong>Agregar una Función Anónima al <code>onPressed</code>:</strong></p>
+<ul>
+<li class="has-line-data" data-line-start="560" data-line-end="566">En el evento <code>onPressed</code> de un botón, puedes asignar una función anónima para definir el comportamiento al hacer clic. Por ejemplo:<pre><code class="has-line-data" data-line-start="562" data-line-end="566" class="language-dart">onPressed: () {
+  <span class="hljs-built_in">print</span>(<span class="hljs-string">'Hola'</span>);
+},
+</code></pre>
+</li>
+<li class="has-line-data" data-line-start="566" data-line-end="568">En este caso, cada vez que se presiona el botón, imprimirá “Hola” en la consola.</li>
+</ul>
+</li>
+<li class="has-line-data" data-line-start="568" data-line-end="571">
+<p class="has-line-data" data-line-start="568" data-line-end="569"><strong>Actualizar el Texto en la Consola:</strong></p>
+<ul>
+<li class="has-line-data" data-line-start="569" data-line-end="571">Puedes modificar el mensaje impreso en la consola dentro de la función anónima. Por ejemplo, cambiar <code>print('Hola')</code> a <code>print('Chao')</code> para que el mensaje impreso sea “Chao”.</li>
+</ul>
+</li>
+<li class="has-line-data" data-line-start="571" data-line-end="575">
+<p class="has-line-data" data-line-start="571" data-line-end="572"><strong>Incrementar el Contador:</strong></p>
+<ul>
+<li class="has-line-data" data-line-start="572" data-line-end="573">Supongamos que tienes una variable <code>counter</code> que se muestra en la interfaz y deseas incrementarla cada vez que se presiona el botón.</li>
+<li class="has-line-data" data-line-start="573" data-line-end="575">Debes definir una función que actualice el valor del contador y asignarla al <code>onPressed</code> del botón.</li>
+</ul>
+</li>
+</ol>
+<h4 class="code-line" data-line-start=575 data-line-end=576 ><a id="Ejemplo_Prctico_575"></a>Ejemplo Práctico</h4>
+<ol>
+<li class="has-line-data" data-line-start="577" data-line-end="583">
+<p class="has-line-data" data-line-start="577" data-line-end="578"><strong>Definir la Variable del Contador:</strong></p>
+<ul>
+<li class="has-line-data" data-line-start="578" data-line-end="583">Crea una variable para el contador en tu clase de estado:<pre><code class="has-line-data" data-line-start="580" data-line-end="582" class="language-dart"><span class="hljs-built_in">int</span> counter = <span class="hljs-number">0</span>;
+</code></pre>
+</li>
+</ul>
+</li>
+<li class="has-line-data" data-line-start="583" data-line-end="594">
+<p class="has-line-data" data-line-start="583" data-line-end="584"><strong>Actualizar el Contador en el <code>onPressed</code>:</strong></p>
+<ul>
+<li class="has-line-data" data-line-start="584" data-line-end="592">En el evento <code>onPressed</code> del botón, actualiza el valor de <code>counter</code>:<pre><code class="has-line-data" data-line-start="586" data-line-end="592" class="language-dart">onPressed: () {
+  setState(() {
+    counter += <span class="hljs-number">1</span>;
+  });
+},
+</code></pre>
+</li>
+<li class="has-line-data" data-line-start="592" data-line-end="594"><code>setState</code> es necesario para notificar a Flutter que el estado ha cambiado y que la interfaz de usuario debe actualizarse.</li>
+</ul>
+</li>
+<li class="has-line-data" data-line-start="594" data-line-end="600">
+<p class="has-line-data" data-line-start="594" data-line-end="595"><strong>Mostrar el Contador en la Interfaz:</strong></p>
+<ul>
+<li class="has-line-data" data-line-start="595" data-line-end="600">Asegúrate de que el valor del contador se muestre en tu widget:<pre><code class="has-line-data" data-line-start="597" data-line-end="599" class="language-dart">Text(<span class="hljs-string">'Counter: $counter'</span>),
+</code></pre>
+</li>
+</ul>
+</li>
+<li class="has-line-data" data-line-start="600" data-line-end="634">
+<p class="has-line-data" data-line-start="600" data-line-end="601"><strong>Código Completo del Ejemplo:</strong></p>
+<pre><code class="has-line-data" data-line-start="602" data-line-end="633" class="language-dart"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">_MyHomePageState</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">State</span>&lt;<span class="hljs-title">MyHomePage</span>&gt; </span>{
+  <span class="hljs-built_in">int</span> counter = <span class="hljs-number">0</span>;
+
+  <span class="hljs-annotation">@override</span>
+  Widget build(BuildContext context) {
+    <span class="hljs-keyword">return</span> Scaffold(
+      appBar: AppBar(
+        title: Text(<span class="hljs-string">'Contador'</span>),
+      ),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: &lt;Widget&gt;[
+            Text(
+              <span class="hljs-string">'Counter: $counter'</span>,
+            ),
+            ElevatedButton(
+              onPressed: () {
+                setState(() {
+                  counter += <span class="hljs-number">1</span>;
+                });
+              },
+              child: Text(<span class="hljs-string">'Incrementar'</span>),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+</code></pre>
+</li>
+</ol>
+<h3 class="code-line" data-line-start=634 data-line-end=635 ><a id="Resumen_634"></a>Resumen</h3>
+<ul>
+<li class="has-line-data" data-line-start="636" data-line-end="637"><strong>Funciones Anónimas:</strong> Puedes asignar funciones anónimas al evento <code>onPressed</code> para definir el comportamiento del botón.</li>
+<li class="has-line-data" data-line-start="637" data-line-end="638"><strong>Actualización del Contador:</strong> Usa <code>setState</code> para actualizar el valor de <code>counter</code> y reflejar los cambios en la interfaz de usuario.</li>
+<li class="has-line-data" data-line-start="638" data-line-end="639"><strong>Mostrar Contador:</strong> Asegúrate de que el valor del contador se muestre en la interfaz de usuario con un widget <code>Text</code>.</li>
+</ul>
+<h3 class="code-line" data-line-start=641 data-line-end=642 ><a id="Introduccin_a_Variables_en_Dart_y_Ejecucin_en_DartPad_641"></a>Introducción a Variables en Dart y Ejecución en DartPad</h3>
+<h4 class="code-line" data-line-start=643 data-line-end=644 ><a id="Definicin_y_Uso_de_Variables_643"></a>Definición y Uso de Variables</h4>
+<ol>
+<li class="has-line-data" data-line-start="645" data-line-end="657">
+<p class="has-line-data" data-line-start="645" data-line-end="646"><strong>Definición de Variables:</strong></p>
+<ul>
+<li class="has-line-data" data-line-start="646" data-line-end="647">En Dart, puedes definir variables usando <code>var</code> (para inferencia de tipo) o <code>final</code>/<code>const</code> (para valores constantes).</li>
+<li class="has-line-data" data-line-start="647" data-line-end="651">Ejemplo con <code>var</code>:<pre><code class="has-line-data" data-line-start="649" data-line-end="651" class="language-dart"><span class="hljs-keyword">var</span> myName = <span class="hljs-string">'Tomás'</span>;
+</code></pre>
+</li>
+<li class="has-line-data" data-line-start="651" data-line-end="655">Ejemplo con <code>final</code>:<pre><code class="has-line-data" data-line-start="653" data-line-end="655" class="language-dart"><span class="hljs-keyword">final</span> myName = <span class="hljs-string">'Tomás'</span>;
+</code></pre>
+</li>
+<li class="has-line-data" data-line-start="655" data-line-end="657">Si sabes que el valor no cambiará, <code>final</code> es una buena opción.</li>
+</ul>
+</li>
+<li class="has-line-data" data-line-start="657" data-line-end="669">
+<p class="has-line-data" data-line-start="657" data-line-end="658"><strong>Impresión de Variables:</strong></p>
+<ul>
+<li class="has-line-data" data-line-start="658" data-line-end="659">Usa <code>print()</code> para mostrar el valor de una variable en la consola.</li>
+<li class="has-line-data" data-line-start="659" data-line-end="669">Ejemplo:<pre><code class="has-line-data" data-line-start="661" data-line-end="668" class="language-dart"><span class="hljs-keyword">void</span> main() {
+  <span class="hljs-keyword">var</span> myName = <span class="hljs-string">'Tomás'</span>;
+  <span class="hljs-keyword">var</span> yourName = <span class="hljs-string">'Adrián'</span>;
+  <span class="hljs-built_in">print</span>(myName);
+  <span class="hljs-built_in">print</span>(yourName);
+}
+</code></pre>
+</li>
+</ul>
+</li>
+</ol>
+<h4 class="code-line" data-line-start=669 data-line-end=670 ><a id="Ejecucin_en_DartPad_669"></a>Ejecución en DartPad</h4>
+<ol>
+<li class="has-line-data" data-line-start="671" data-line-end="675">
+<p class="has-line-data" data-line-start="671" data-line-end="672"><strong>Ejecutar Código en DartPad:</strong></p>
+<ul>
+<li class="has-line-data" data-line-start="672" data-line-end="673">DartPad es una herramienta en línea que te permite escribir, ejecutar y experimentar con código Dart.</li>
+<li class="has-line-data" data-line-start="673" data-line-end="675">Para probar el código, simplemente escribe en el editor y presiona el botón “Run”. El resultado se mostrará en la consola de DartPad.</li>
+</ul>
+</li>
+<li class="has-line-data" data-line-start="675" data-line-end="691">
+<p class="has-line-data" data-line-start="675" data-line-end="676"><strong>Código de Ejemplo:</strong></p>
+<ul>
+<li class="has-line-data" data-line-start="676" data-line-end="685">Aquí hay un código básico para comenzar:<pre><code class="has-line-data" data-line-start="678" data-line-end="685" class="language-dart"><span class="hljs-keyword">void</span> main() {
+  <span class="hljs-keyword">var</span> myName = <span class="hljs-string">'Tomás'</span>;
+  <span class="hljs-keyword">var</span> yourName = <span class="hljs-string">'Adrián'</span>;
+  <span class="hljs-built_in">print</span>(<span class="hljs-string">'My name is: $myName'</span>);
+  <span class="hljs-built_in">print</span>(<span class="hljs-string">'Your name is: $yourName'</span>);
+}
+</code></pre>
+</li>
+<li class="has-line-data" data-line-start="685" data-line-end="691">Al presionar “Run”, verás en la consola:<pre><code class="has-line-data" data-line-start="687" data-line-end="690">My name is: Tomás
+Your name is: Adrián
+</code></pre>
+</li>
+</ul>
+</li>
+</ol>
+<h4 class="code-line" data-line-start=691 data-line-end=692 ><a id="Conceptos_Clave_691"></a>Conceptos Clave</h4>
+<ul>
+<li class="has-line-data" data-line-start="693" data-line-end="697">
+<p class="has-line-data" data-line-start="693" data-line-end="694"><strong>Variables:</strong></p>
+<ul>
+<li class="has-line-data" data-line-start="694" data-line-end="695"><code>var</code> se usa para declarar variables cuyo tipo se infiere automáticamente.</li>
+<li class="has-line-data" data-line-start="695" data-line-end="697"><code>final</code> se usa para declarar variables cuyo valor no cambiará después de la asignación.</li>
+</ul>
+</li>
+<li class="has-line-data" data-line-start="697" data-line-end="700">
+<p class="has-line-data" data-line-start="697" data-line-end="698"><strong>Cadena de Texto:</strong></p>
+<ul>
+<li class="has-line-data" data-line-start="698" data-line-end="700">Las cadenas de texto se colocan entre comillas simples <code>'</code> o dobles <code>&quot;</code>.</li>
+</ul>
+</li>
+<li class="has-line-data" data-line-start="700" data-line-end="703">
+<p class="has-line-data" data-line-start="700" data-line-end="701"><strong>Impresión:</strong></p>
+<ul>
+<li class="has-line-data" data-line-start="701" data-line-end="703"><code>print()</code> se usa para mostrar información en la consola.</li>
+</ul>
+</li>
+</ul>
+<p class="has-line-data" data-line-start="703" data-line-end="704">Esta es una introducción básica para trabajar con variables y cómo ejecutar código en DartPad.</p>
+<h3 class="code-line" data-line-start=706 data-line-end=707 ><a id="Creacin_y_Uso_de_Widgets_en_Flutter_706"></a>Creación y Uso de Widgets en Flutter</h3>
+<h4 class="code-line" data-line-start=708 data-line-end=709 ><a id="Introduccin_a_Widgets_708"></a>Introducción a Widgets</h4>
+<ol>
+<li class="has-line-data" data-line-start="710" data-line-end="744">
+<p class="has-line-data" data-line-start="710" data-line-end="711"><strong>Estructura de un Widget Stateless:</strong></p>
+<ul>
+<li class="has-line-data" data-line-start="711" data-line-end="712">Un widget <code>Stateless</code> en Flutter es un widget que no cambia su estado después de ser construido. Es decir, es un widget que muestra información estática.</li>
+<li class="has-line-data" data-line-start="712" data-line-end="744">Ejemplo básico de un widget <code>Stateless</code>:<pre><code class="has-line-data" data-line-start="714" data-line-end="743" class="language-dart"><span class="hljs-literal">import</span> <span class="hljs-string">'package:flutter/material.dart'</span>;
+
+<span class="hljs-keyword">void</span> main() {
+  runApp(MyApp());
+}
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MyApp</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">StatelessWidget</span> </span>{
+  <span class="hljs-annotation">@override</span>
+  Widget build(BuildContext context) {
+    <span class="hljs-keyword">return</span> MaterialApp(
+      home: MyHomePage(),
+    );
+  }
+}
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MyHomePage</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">StatelessWidget</span> </span>{
+  <span class="hljs-annotation">@override</span>
+  Widget build(BuildContext context) {
+    <span class="hljs-keyword">return</span> Scaffold(
+      appBar: AppBar(
+        title: Text(<span class="hljs-string">'My Home Page'</span>),
+      ),
+      body: Center(
+        child: Text(<span class="hljs-string">'Hello, World!'</span>),
+      ),
+    );
+  }
+}
+</code></pre>
+</li>
+</ul>
+</li>
+<li class="has-line-data" data-line-start="744" data-line-end="774">
+<p class="has-line-data" data-line-start="744" data-line-end="745"><strong>Creación de un Widget Personalizado:</strong></p>
+<ul>
+<li class="has-line-data" data-line-start="745" data-line-end="746">Puedes crear tus propios widgets extendiendo <code>StatelessWidget</code> o <code>StatefulWidget</code>.</li>
+<li class="has-line-data" data-line-start="746" data-line-end="762">Ejemplo de cómo crear un widget <code>Stateless</code>:<pre><code class="has-line-data" data-line-start="748" data-line-end="762" class="language-dart"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">CustomHomePage</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">StatelessWidget</span> </span>{
+  <span class="hljs-annotation">@override</span>
+  Widget build(BuildContext context) {
+    <span class="hljs-keyword">return</span> Scaffold(
+      appBar: AppBar(
+        title: Text(<span class="hljs-string">'Custom Home Page'</span>),
+      ),
+      body: Center(
+        child: Text(<span class="hljs-string">'Welcome to my custom home page!'</span>),
+      ),
+    );
+  }
+}
+</code></pre>
+</li>
+<li class="has-line-data" data-line-start="762" data-line-end="774">Luego, usa este widget en tu <code>MaterialApp</code>:<pre><code class="has-line-data" data-line-start="764" data-line-end="773" class="language-dart"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MyApp</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">StatelessWidget</span> </span>{
+  <span class="hljs-annotation">@override</span>
+  Widget build(BuildContext context) {
+    <span class="hljs-keyword">return</span> MaterialApp(
+      home: CustomHomePage(),
+    );
+  }
+}
+</code></pre>
+</li>
+</ul>
+</li>
+</ol>
+<h4 class="code-line" data-line-start=774 data-line-end=775 ><a id="Uso_de_build_Method_774"></a>Uso de <code>build</code> Method</h4>
+<ol>
+<li class="has-line-data" data-line-start="776" data-line-end="794">
+<p class="has-line-data" data-line-start="776" data-line-end="777"><strong>Método <code>build</code>:</strong></p>
+<ul>
+<li class="has-line-data" data-line-start="777" data-line-end="778">El método <code>build</code> es donde defines la estructura visual de tu widget.</li>
+<li class="has-line-data" data-line-start="778" data-line-end="779">Este método debe retornar un widget que representa la interfaz de usuario.</li>
+<li class="has-line-data" data-line-start="779" data-line-end="794">Ejemplo básico:<pre><code class="has-line-data" data-line-start="781" data-line-end="793" class="language-dart"><span class="hljs-annotation">@override</span>
+Widget build(BuildContext context) {
+  <span class="hljs-keyword">return</span> Scaffold(
+    appBar: AppBar(
+      title: Text(<span class="hljs-string">'Title'</span>),
+    ),
+    body: Center(
+      child: Text(<span class="hljs-string">'Body Content'</span>),
+    ),
+  );
+}
+</code></pre>
+</li>
+</ul>
+</li>
+<li class="has-line-data" data-line-start="794" data-line-end="800">
+<p class="has-line-data" data-line-start="794" data-line-end="795"><strong>Conceptos Clave:</strong></p>
+<ul>
+<li class="has-line-data" data-line-start="795" data-line-end="796"><strong>Widget:</strong> Unidad básica de la interfaz de usuario en Flutter.</li>
+<li class="has-line-data" data-line-start="796" data-line-end="797"><strong>StatelessWidget:</strong> Widget que no cambia su estado.</li>
+<li class="has-line-data" data-line-start="797" data-line-end="798"><strong>StatefulWidget:</strong> Widget que puede cambiar su estado durante su vida útil.</li>
+<li class="has-line-data" data-line-start="798" data-line-end="800"><strong>Método <code>build</code>:</strong> Método que construye la interfaz del widget.</li>
+</ul>
+</li>
+</ol>
+<h4 class="code-line" data-line-start=800 data-line-end=801 ><a id="Ejemplo_Completo_800"></a>Ejemplo Completo</h4>
+<p class="has-line-data" data-line-start="802" data-line-end="803">Aquí tienes un ejemplo completo integrando los conceptos discutidos:</p>
+<pre><code class="has-line-data" data-line-start="805" data-line-end="834" class="language-dart"><span class="hljs-literal">import</span> <span class="hljs-string">'package:flutter/material.dart'</span>;
+
+<span class="hljs-keyword">void</span> main() {
+  runApp(MyApp());
+}
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MyApp</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">StatelessWidget</span> </span>{
+  <span class="hljs-annotation">@override</span>
+  Widget build(BuildContext context) {
+    <span class="hljs-keyword">return</span> MaterialApp(
+      home: CustomHomePage(),
+    );
+  }
+}
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">CustomHomePage</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">StatelessWidget</span> </span>{
+  <span class="hljs-annotation">@override</span>
+  Widget build(BuildContext context) {
+    <span class="hljs-keyword">return</span> Scaffold(
+      appBar: AppBar(
+        title: Text(<span class="hljs-string">'Custom Home Page'</span>),
+      ),
+      body: Center(
+        child: Text(<span class="hljs-string">'Welcome to my custom home page!'</span>),
+      ),
+    );
+  }
+}
+</code></pre>
+<ul>
+<li class="has-line-data" data-line-start="835" data-line-end="836"><strong><code>MyApp</code></strong>: Widget principal que ejecuta la aplicación.</li>
+<li class="has-line-data" data-line-start="836" data-line-end="838"><strong><code>CustomHomePage</code></strong>: Widget personalizado que se muestra en la pantalla.</li>
+</ul>
+<h3 class="code-line" data-line-start=838 data-line-end=839 ><a id="Recapitulacin_838"></a>Recapitulación</h3>
+<ul>
+<li class="has-line-data" data-line-start="840" data-line-end="841"><strong>StatelessWidget</strong> se usa para interfaces estáticas.</li>
+<li class="has-line-data" data-line-start="841" data-line-end="842"><strong>StatefulWidget</strong> se usa para interfaces dinámicas que cambian con el tiempo.</li>
+<li class="has-line-data" data-line-start="842" data-line-end="844"><strong>Método <code>build</code></strong>: Define la estructura visual del widget.</li>
+</ul>
+<p class="has-line-data" data-line-start="844" data-line-end="845">¿Hay algún aspecto específico del código o de los widgets que te gustaría explorar más a fondo?</p>
+<p class="has-line-data" data-line-start="847" data-line-end="848">¡Perfecto! Aquí tienes un resumen de lo que has cubierto hasta ahora:</p>
+<ol>
+<li class="has-line-data" data-line-start="849" data-line-end="853">
+<p class="has-line-data" data-line-start="849" data-line-end="850"><strong>Manejo de Estado en Flutter</strong>:</p>
+<ul>
+<li class="has-line-data" data-line-start="850" data-line-end="851"><strong>Stateless Widget</strong>: No tiene estado interno, no puede cambiar su apariencia después de ser construido.</li>
+<li class="has-line-data" data-line-start="851" data-line-end="853"><strong>Stateful Widget</strong>: Puede cambiar su apariencia en respuesta a eventos, mantiene un estado interno que puede cambiar con el tiempo.</li>
+</ul>
+</li>
+<li class="has-line-data" data-line-start="853" data-line-end="857">
+<p class="has-line-data" data-line-start="853" data-line-end="854"><strong>Creación de Widgets</strong>:</p>
+<ul>
+<li class="has-line-data" data-line-start="854" data-line-end="855"><strong>Stateless Widgets</strong>: Se crean cuando no necesitas manejar estado. Usualmente se utilizan para componentes que no necesitan actualizar su información.</li>
+<li class="has-line-data" data-line-start="855" data-line-end="857"><strong>Stateful Widgets</strong>: Se crean cuando necesitas manejar el estado que puede cambiar durante la vida útil del widget.</li>
+</ul>
+</li>
+<li class="has-line-data" data-line-start="857" data-line-end="861">
+<p class="has-line-data" data-line-start="857" data-line-end="858"><strong>Uso de la Terminal</strong>:</p>
+<ul>
+<li class="has-line-data" data-line-start="858" data-line-end="859">Ejecutar comandos como <code>flutter doctor</code> para verificar la instalación y configuración del entorno de desarrollo.</li>
+<li class="has-line-data" data-line-start="859" data-line-end="861">Instalar paquetes y herramientas como Flutter SDK y Visual Studio Code.</li>
+</ul>
+</li>
+<li class="has-line-data" data-line-start="861" data-line-end="865">
+<p class="has-line-data" data-line-start="861" data-line-end="862"><strong>Dart Basics</strong>:</p>
+<ul>
+<li class="has-line-data" data-line-start="862" data-line-end="863">Cómo crear y usar variables.</li>
+<li class="has-line-data" data-line-start="863" data-line-end="865">Cómo imprimir valores en Dart usando <code>print()</code>.</li>
+</ul>
+</li>
+<li class="has-line-data" data-line-start="865" data-line-end="870">
+<p class="has-line-data" data-line-start="865" data-line-end="866"><strong>Aplicación Flutter Básica</strong>:</p>
+<ul>
+<li class="has-line-data" data-line-start="866" data-line-end="867">Cómo configurar el proyecto y crear un primer widget.</li>
+<li class="has-line-data" data-line-start="867" data-line-end="868">Uso de fuentes personalizadas y assets como imágenes.</li>
+<li class="has-line-data" data-line-start="868" data-line-end="870">Modificación de propiedades del widget, como el estilo y la posición.</li>
+</ul>
+</li>
+<li class="has-line-data" data-line-start="870" data-line-end="880">
+<p class="has-line-data" data-line-start="870" data-line-end="871"><strong>Listas y Mapas</strong>:</p>
+<ul>
+<li class="has-line-data" data-line-start="871" data-line-end="875"><strong>Listas</strong>: Arreglos ordenados de elementos a los que se puede acceder mediante un índice. Ejemplo:<pre><code class="has-line-data" data-line-start="873" data-line-end="875" class="language-dart"><span class="hljs-built_in">List</span>&lt;<span class="hljs-built_in">String</span>&gt; frutas = [<span class="hljs-string">'Tomate'</span>, <span class="hljs-string">'Banano'</span>, <span class="hljs-string">'Manzana'</span>, <span class="hljs-string">'Sandía'</span>];
+</code></pre>
+</li>
+<li class="has-line-data" data-line-start="875" data-line-end="880"><strong>Mapas</strong>: Estructuras de datos que almacenan pares clave-valor. Ejemplo:<pre><code class="has-line-data" data-line-start="877" data-line-end="879" class="language-dart"><span class="hljs-built_in">Map</span>&lt;<span class="hljs-built_in">String</span>, <span class="hljs-built_in">int</span>&gt; edades = {<span class="hljs-string">'Tomás'</span>: <span class="hljs-number">30</span>, <span class="hljs-string">'Adrián'</span>: <span class="hljs-number">25</span>};
+</code></pre>
+</li>
+</ul>
+</li>
+</ol>
+<p class="has-line-data" data-line-start="880" data-line-end="881">Para listas, puedes acceder a los elementos usando su índice, y para mapas, puedes acceder a los valores usando las claves. Si necesitas más ayuda con listas, mapas, o cualquier otro aspecto de Flutter, ¡avísame!</p>
+<p class="has-line-data" data-line-start="883" data-line-end="884">¡Estás avanzando muy bien en tu aprendizaje de Dart y Flutter! Aquí te dejo un resumen sobre el manejo de condiciones en Dart, basado en lo que has cubierto:</p>
+<ol>
+<li class="has-line-data" data-line-start="885" data-line-end="908">
+<p class="has-line-data" data-line-start="885" data-line-end="886"><strong>Estructuras Condicionales en Dart</strong>:</p>
+<ul>
+<li class="has-line-data" data-line-start="886" data-line-end="892"><strong><code>if</code> Statement</strong>: Se utiliza para ejecutar un bloque de código si una condición se cumple. Ejemplo:<pre><code class="has-line-data" data-line-start="888" data-line-end="892" class="language-dart"><span class="hljs-keyword">if</span> (miNombre == <span class="hljs-string">'Tomás'</span>) {
+  <span class="hljs-built_in">print</span>(<span class="hljs-string">'Hola Tomás'</span>);
+}
+</code></pre>
+</li>
+<li class="has-line-data" data-line-start="892" data-line-end="899"><strong>Comparadores</strong>:
+<ul>
+<li class="has-line-data" data-line-start="893" data-line-end="894"><code>==</code> (igual a)</li>
+<li class="has-line-data" data-line-start="894" data-line-end="895"><code>!=</code> (diferente de)</li>
+<li class="has-line-data" data-line-start="895" data-line-end="896"><code>&lt;</code> (menor que)</li>
+<li class="has-line-data" data-line-start="896" data-line-end="897"><code>&gt;</code> (mayor que)</li>
+<li class="has-line-data" data-line-start="897" data-line-end="898"><code>&lt;=</code> (menor o igual que)</li>
+<li class="has-line-data" data-line-start="898" data-line-end="899"><code>&gt;=</code> (mayor o igual que)</li>
+</ul>
+</li>
+<li class="has-line-data" data-line-start="899" data-line-end="908"><strong><code>else</code> Statement</strong>: Se utiliza para ejecutar un bloque de código si la condición del <code>if</code> no se cumple. Ejemplo:<pre><code class="has-line-data" data-line-start="901" data-line-end="907" class="language-dart"><span class="hljs-keyword">if</span> (miEdad &lt; <span class="hljs-number">30</span>) {
+  <span class="hljs-built_in">print</span>(<span class="hljs-string">'Soy joven'</span>);
+} <span class="hljs-keyword">else</span> {
+  <span class="hljs-built_in">print</span>(<span class="hljs-string">'Estoy viejo'</span>);
+}
+</code></pre>
+</li>
+</ul>
+</li>
+<li class="has-line-data" data-line-start="908" data-line-end="927">
+<p class="has-line-data" data-line-start="908" data-line-end="909"><strong>Ejemplos de Comparaciones</strong>:</p>
+<ul>
+<li class="has-line-data" data-line-start="909" data-line-end="918">Comparar números:<pre><code class="has-line-data" data-line-start="911" data-line-end="918" class="language-dart"><span class="hljs-built_in">int</span> miEdad = <span class="hljs-number">29</span>;
+<span class="hljs-keyword">if</span> (miEdad &lt; <span class="hljs-number">30</span>) {
+  <span class="hljs-built_in">print</span>(<span class="hljs-string">'Soy joven'</span>);
+} <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (miEdad &gt;= <span class="hljs-number">30</span>) {
+  <span class="hljs-built_in">print</span>(<span class="hljs-string">'Estoy viejo'</span>);
+}
+</code></pre>
+</li>
+<li class="has-line-data" data-line-start="918" data-line-end="927">Comparaciones con operadores lógicos:<pre><code class="has-line-data" data-line-start="920" data-line-end="926" class="language-dart"><span class="hljs-keyword">if</span> (miEdad &lt;= <span class="hljs-number">29</span>) {
+  <span class="hljs-built_in">print</span>(<span class="hljs-string">'Soy joven'</span>);
+} <span class="hljs-keyword">else</span> {
+  <span class="hljs-built_in">print</span>(<span class="hljs-string">'Estoy viejo'</span>);
+}
+</code></pre>
+</li>
+</ul>
+</li>
+<li class="has-line-data" data-line-start="927" data-line-end="939">
+<p class="has-line-data" data-line-start="927" data-line-end="928"><strong>Uso de <code>else if</code></strong>:</p>
+<ul>
+<li class="has-line-data" data-line-start="928" data-line-end="939">Permite añadir múltiples condiciones para evaluar:<pre><code class="has-line-data" data-line-start="930" data-line-end="938" class="language-dart"><span class="hljs-keyword">if</span> (miEdad &lt; <span class="hljs-number">20</span>) {
+  <span class="hljs-built_in">print</span>(<span class="hljs-string">'Soy adolescente'</span>);
+} <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (miEdad &lt; <span class="hljs-number">30</span>) {
+  <span class="hljs-built_in">print</span>(<span class="hljs-string">'Soy joven'</span>);
+} <span class="hljs-keyword">else</span> {
+  <span class="hljs-built_in">print</span>(<span class="hljs-string">'Estoy viejo'</span>);
+}
+</code></pre>
+</li>
+</ul>
+</li>
+</ol>
+<p class="has-line-data" data-line-start="939" data-line-end="940">Recuerda que las estructuras condicionales te permiten tomar decisiones dentro de tu código en función de las condiciones que definas. ¡Sigue así y no dudes en preguntarme si necesitas más ayuda con estas u otras funcionalidades!</p>
+<p class="has-line-data" data-line-start="941" data-line-end="942">¡Muy bien! Aquí tienes un resumen de los conceptos de <strong>clases y objetos</strong> en Dart y <strong>navegación</strong> en Flutter:</p>
+<h3 class="code-line" data-line-start=943 data-line-end=944 ><a id="Clases_y_Objetos_en_Dart_943"></a>Clases y Objetos en Dart</h3>
+<ol>
+<li class="has-line-data" data-line-start="945" data-line-end="963">
+<p class="has-line-data" data-line-start="945" data-line-end="946"><strong>Clase</strong>:</p>
+<ul>
+<li class="has-line-data" data-line-start="946" data-line-end="947">Es una plantilla para crear objetos. Define propiedades (variables) y métodos (funciones) que los objetos de esa clase tendrán.</li>
+<li class="has-line-data" data-line-start="947" data-line-end="963">Ejemplo:<pre><code class="has-line-data" data-line-start="949" data-line-end="962" class="language-dart"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Carro</span> </span>{
+  <span class="hljs-built_in">String</span> color;
+  <span class="hljs-built_in">int</span> puertas;
+
+  <span class="hljs-comment">// Constructor</span>
+  Carro(<span class="hljs-keyword">this</span>.color, <span class="hljs-keyword">this</span>.puertas);
+
+  <span class="hljs-comment">// Método</span>
+  <span class="hljs-keyword">void</span> reversar() {
+    <span class="hljs-built_in">print</span>(<span class="hljs-string">'Estoy reversando'</span>);
+  }
+}
+</code></pre>
+</li>
+</ul>
+</li>
+<li class="has-line-data" data-line-start="963" data-line-end="981">
+<p class="has-line-data" data-line-start="963" data-line-end="964"><strong>Objeto</strong>:</p>
+<ul>
+<li class="has-line-data" data-line-start="964" data-line-end="965">Una instancia de una clase. Utiliza el constructor para establecer los valores de las propiedades.</li>
+<li class="has-line-data" data-line-start="965" data-line-end="981">Ejemplo:<pre><code class="has-line-data" data-line-start="967" data-line-end="980" class="language-dart"><span class="hljs-keyword">void</span> main() {
+  <span class="hljs-comment">// Crear instancias</span>
+  Carro ferrari = Carro(<span class="hljs-string">'rojo'</span>, <span class="hljs-number">2</span>);
+  Carro bmw = Carro(<span class="hljs-string">'blanco'</span>, <span class="hljs-number">5</span>);
+
+  <span class="hljs-comment">// Acceder a propiedades y métodos</span>
+  <span class="hljs-built_in">print</span>(<span class="hljs-string">'Mi Ferrari es <span class="hljs-subst">${ferrari.color}</span> y tiene <span class="hljs-subst">${ferrari.puertas}</span> puertas'</span>);
+  ferrari.reversar();
+  
+  <span class="hljs-built_in">print</span>(<span class="hljs-string">'Mi BMW es <span class="hljs-subst">${bmw.color}</span> y tiene <span class="hljs-subst">${bmw.puertas}</span> puertas'</span>);
+  bmw.reversar();
+}
+</code></pre>
+</li>
+</ul>
+</li>
+</ol>
+<h3 class="code-line" data-line-start=981 data-line-end=982 ><a id="Navegacin_en_Flutter_981"></a>Navegación en Flutter</h3>
+<ol>
+<li class="has-line-data" data-line-start="983" data-line-end="986">
+<p class="has-line-data" data-line-start="983" data-line-end="984"><strong>Navegación entre Pantallas</strong>:</p>
+<ul>
+<li class="has-line-data" data-line-start="984" data-line-end="986">En Flutter, se utilizan rutas para navegar entre diferentes pantallas o páginas.</li>
+</ul>
+</li>
+<li class="has-line-data" data-line-start="986" data-line-end="1043">
+<p class="has-line-data" data-line-start="986" data-line-end="987"><strong>Definir Rutas</strong>:</p>
+<ul>
+<li class="has-line-data" data-line-start="987" data-line-end="988">Puedes definir rutas en el archivo principal de tu aplicación. Aquí se establece qué widget se debe mostrar para cada ruta.</li>
+<li class="has-line-data" data-line-start="988" data-line-end="1043">Ejemplo:<pre><code class="has-line-data" data-line-start="990" data-line-end="1042" class="language-dart"><span class="hljs-keyword">void</span> main() {
+  runApp(MyApp());
+}
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MyApp</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">StatelessWidget</span> </span>{
+  <span class="hljs-annotation">@override</span>
+  Widget build(BuildContext context) {
+    <span class="hljs-keyword">return</span> MaterialApp(
+      title: <span class="hljs-string">'Navegación'</span>,
+      initialRoute: <span class="hljs-string">'/'</span>,
+      routes: {
+        <span class="hljs-string">'/'</span>: (context) =&gt; HomeScreen(),
+        <span class="hljs-string">'/second'</span>: (context) =&gt; SecondScreen(),
+      },
+    );
+  }
+}
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">HomeScreen</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">StatelessWidget</span> </span>{
+  <span class="hljs-annotation">@override</span>
+  Widget build(BuildContext context) {
+    <span class="hljs-keyword">return</span> Scaffold(
+      appBar: AppBar(title: Text(<span class="hljs-string">'Pantalla Principal'</span>)),
+      body: Center(
+        child: ElevatedButton(
+          onPressed: () {
+            Navigator.pushNamed(context, <span class="hljs-string">'/second'</span>);
+          },
+          child: Text(<span class="hljs-string">'Ir a la Segunda Pantalla'</span>),
+        ),
+      ),
+    );
+  }
+}
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">SecondScreen</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">StatelessWidget</span> </span>{
+  <span class="hljs-annotation">@override</span>
+  Widget build(BuildContext context) {
+    <span class="hljs-keyword">return</span> Scaffold(
+      appBar: AppBar(title: Text(<span class="hljs-string">'Segunda Pantalla'</span>)),
+      body: Center(
+        child: ElevatedButton(
+          onPressed: () {
+            Navigator.pop(context);
+          },
+          child: Text(<span class="hljs-string">'Volver a la Pantalla Principal'</span>),
+        ),
+      ),
+    );
+  }
+}
+</code></pre>
+</li>
+</ul>
+</li>
+<li class="has-line-data" data-line-start="1043" data-line-end="1048">
+<p class="has-line-data" data-line-start="1043" data-line-end="1044"><strong>Métodos de Navegación</strong>:</p>
+<ul>
+<li class="has-line-data" data-line-start="1044" data-line-end="1045"><code>Navigator.pushNamed(context, '/ruta')</code>: Navega a una pantalla definida en las rutas.</li>
+<li class="has-line-data" data-line-start="1045" data-line-end="1046"><code>Navigator.pop(context)</code>: Vuelve a la pantalla anterior.</li>
+<li class="has-line-data" data-line-start="1046" data-line-end="1048"><code>Navigator.push(context, MaterialPageRoute(builder: (context) =&gt; Pantalla()))</code>: Navega a una nueva pantalla sin definirla en las rutas.</li>
+</ul>
+</li>
+</ol>
+<p class="has-line-data" data-line-start="1048" data-line-end="1049">Con estos conceptos podrás crear aplicaciones que gestionen estados de manera eficiente y naveguen entre diferentes pantallas. Si tienes más preguntas sobre cualquiera de estos temas o cualquier otro aspecto de Flutter, ¡no dudes en preguntar!</p>
+<h3 class="code-line" data-line-start=1050 data-line-end=1051 ><a id="Navegacin_en_Flutter_1050"></a>Navegación en Flutter</h3>
+<p class="has-line-data" data-line-start="1052" data-line-end="1053">En Flutter, la navegación entre pantallas se maneja mediante el uso de rutas. Existen dos métodos principales para gestionar la navegación: la <strong>navegación imperativa</strong> (anónima) y la <strong>navegación por nombre</strong>.</p>
+<h4 class="code-line" data-line-start=1054 data-line-end=1055 ><a id="Navegacin_Imperativa_1054"></a>Navegación Imperativa</h4>
+<ol>
+<li class="has-line-data" data-line-start="1056" data-line-end="1066">
+<p class="has-line-data" data-line-start="1056" data-line-end="1057"><strong><code>Navigator.push</code></strong>:</p>
+<ul>
+<li class="has-line-data" data-line-start="1057" data-line-end="1058">Utilizado para agregar una nueva ruta (pantalla) a la pila de navegación.</li>
+<li class="has-line-data" data-line-start="1058" data-line-end="1066">Ejemplo:<pre><code class="has-line-data" data-line-start="1060" data-line-end="1065" class="language-dart">Navigator.push(
+  context,
+  MaterialPageRoute(builder: (context) =&gt; Screen2()),
+);
+</code></pre>
+</li>
+</ul>
+</li>
+<li class="has-line-data" data-line-start="1066" data-line-end="1073">
+<p class="has-line-data" data-line-start="1066" data-line-end="1067"><strong><code>Navigator.pop</code></strong>:</p>
+<ul>
+<li class="has-line-data" data-line-start="1067" data-line-end="1068">Utilizado para eliminar la ruta actual de la pila de navegación, volviendo a la pantalla anterior.</li>
+<li class="has-line-data" data-line-start="1068" data-line-end="1073">Ejemplo:<pre><code class="has-line-data" data-line-start="1070" data-line-end="1072" class="language-dart">Navigator.pop(context);
+</code></pre>
+</li>
+</ul>
+</li>
+</ol>
+<h4 class="code-line" data-line-start=1073 data-line-end=1074 ><a id="Navegacin_por_Nombre_1073"></a>Navegación por Nombre</h4>
+<ol>
+<li class="has-line-data" data-line-start="1075" data-line-end="1098">
+<p class="has-line-data" data-line-start="1075" data-line-end="1076"><strong>Definir Rutas</strong>:</p>
+<ul>
+<li class="has-line-data" data-line-start="1076" data-line-end="1077">En el <code>MaterialApp</code>, puedes definir las rutas mediante la propiedad <code>routes</code>.</li>
+<li class="has-line-data" data-line-start="1077" data-line-end="1098">Ejemplo:<pre><code class="has-line-data" data-line-start="1079" data-line-end="1097" class="language-dart"><span class="hljs-keyword">void</span> main() {
+  runApp(MyApp());
+}
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MyApp</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">StatelessWidget</span> </span>{
+  <span class="hljs-annotation">@override</span>
+  Widget build(BuildContext context) {
+    <span class="hljs-keyword">return</span> MaterialApp(
+      title: <span class="hljs-string">'Navegación por Nombre'</span>,
+      initialRoute: <span class="hljs-string">'/'</span>,
+      routes: {
+        <span class="hljs-string">'/'</span>: (context) =&gt; Screen1(),
+        <span class="hljs-string">'/screen2'</span>: (context) =&gt; Screen2(),
+      },
+    );
+  }
+}
+</code></pre>
+</li>
+</ul>
+</li>
+<li class="has-line-data" data-line-start="1098" data-line-end="1105">
+<p class="has-line-data" data-line-start="1098" data-line-end="1099"><strong>Navegar Usando Nombre</strong>:</p>
+<ul>
+<li class="has-line-data" data-line-start="1099" data-line-end="1100">Puedes navegar a una pantalla utilizando el nombre de la ruta definida.</li>
+<li class="has-line-data" data-line-start="1100" data-line-end="1105">Ejemplo:<pre><code class="has-line-data" data-line-start="1102" data-line-end="1104" class="language-dart">Navigator.pushNamed(context, <span class="hljs-string">'/screen2'</span>);
+</code></pre>
+</li>
+</ul>
+</li>
+<li class="has-line-data" data-line-start="1105" data-line-end="1108">
+<p class="has-line-data" data-line-start="1105" data-line-end="1106"><strong>Volver a la Pantalla Anterior</strong>:</p>
+<ul>
+<li class="has-line-data" data-line-start="1106" data-line-end="1108">Utiliza <code>Navigator.pop</code> para regresar a la pantalla anterior, igual que en la navegación imperativa.</li>
+</ul>
+</li>
+</ol>
+<h4 class="code-line" data-line-start=1108 data-line-end=1109 ><a id="Ejemplo_Completo_1108"></a>Ejemplo Completo</h4>
+<p class="has-line-data" data-line-start="1110" data-line-end="1111">Aquí tienes un ejemplo básico con navegación por nombre:</p>
+<pre><code class="has-line-data" data-line-start="1113" data-line-end="1165" class="language-dart"><span class="hljs-keyword">void</span> main() {
+  runApp(MyApp());
+}
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MyApp</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">StatelessWidget</span> </span>{
+  <span class="hljs-annotation">@override</span>
+  Widget build(BuildContext context) {
+    <span class="hljs-keyword">return</span> MaterialApp(
+      title: <span class="hljs-string">'Navegación por Nombre'</span>,
+      initialRoute: <span class="hljs-string">'/'</span>,
+      routes: {
+        <span class="hljs-string">'/'</span>: (context) =&gt; Screen1(),
+        <span class="hljs-string">'/screen2'</span>: (context) =&gt; Screen2(),
+      },
+    );
+  }
+}
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Screen1</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">StatelessWidget</span> </span>{
+  <span class="hljs-annotation">@override</span>
+  Widget build(BuildContext context) {
+    <span class="hljs-keyword">return</span> Scaffold(
+      appBar: AppBar(title: Text(<span class="hljs-string">'Pantalla 1'</span>)),
+      body: Center(
+        child: ElevatedButton(
+          onPressed: () {
+            Navigator.pushNamed(context, <span class="hljs-string">'/screen2'</span>);
+          },
+          child: Text(<span class="hljs-string">'Ir a Pantalla 2'</span>),
+        ),
+      ),
+    );
+  }
+}
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Screen2</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">StatelessWidget</span> </span>{
+  <span class="hljs-annotation">@override</span>
+  Widget build(BuildContext context) {
+    <span class="hljs-keyword">return</span> Scaffold(
+      appBar: AppBar(title: Text(<span class="hljs-string">'Pantalla 2'</span>)),
+      body: Center(
+        child: ElevatedButton(
+          onPressed: () {
+            Navigator.pop(context);
+          },
+          child: Text(<span class="hljs-string">'Volver a Pantalla 1'</span>),
+        ),
+      ),
+    );
+  }
+}
+</code></pre>
+<p class="has-line-data" data-line-start="1166" data-line-end="1167">En este ejemplo:</p>
+<ul>
+<li class="has-line-data" data-line-start="1167" data-line-end="1168">La aplicación tiene dos pantallas, <code>Screen1</code> y <code>Screen2</code>.</li>
+<li class="has-line-data" data-line-start="1168" data-line-end="1169">Utiliza rutas nombradas para la navegación.</li>
+<li class="has-line-data" data-line-start="1169" data-line-end="1170">La primera pantalla tiene un botón que navega a la segunda pantalla.</li>
+<li class="has-line-data" data-line-start="1170" data-line-end="1172">La segunda pantalla tiene un botón para volver a la primera pantalla.</li>
+</ul>
+<h3 class="code-line" data-line-start=1172 data-line-end=1173 ><a id="Uso_de_Router_y_Navegacin_en_Flutter_1172"></a>Uso de Router y Navegación en Flutter</h3>
+<p class="has-line-data" data-line-start="1174" data-line-end="1175">Para manejar rutas y navegación en Flutter, puedes usar tanto la configuración clásica de rutas como el enfoque más avanzado con el nuevo sistema de enrutamiento (<code>Router</code> y <code>RouteInformationParser</code>). A continuación, te explico cómo hacerlo:</p>
+<h4 class="code-line" data-line-start=1176 data-line-end=1177 ><a id="Configuracin_Clsica_de_Rutas_1176"></a>Configuración Clásica de Rutas</h4>
+<ol>
+<li class="has-line-data" data-line-start="1178" data-line-end="1201">
+<p class="has-line-data" data-line-start="1178" data-line-end="1180"><strong>Definir Rutas</strong>:<br>
+Puedes definir rutas en el <code>MaterialApp</code> usando la propiedad <code>routes</code>. Aquí, defines un mapa de rutas y sus correspondientes widgets.</p>
+<pre><code class="has-line-data" data-line-start="1182" data-line-end="1200" class="language-dart"><span class="hljs-keyword">void</span> main() {
+  runApp(MyApp());
+}
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MyApp</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">StatelessWidget</span> </span>{
+  <span class="hljs-annotation">@override</span>
+  Widget build(BuildContext context) {
+    <span class="hljs-keyword">return</span> MaterialApp(
+      title: <span class="hljs-string">'Navegación por Nombre'</span>,
+      initialRoute: <span class="hljs-string">'/screen1'</span>,
+      routes: {
+        <span class="hljs-string">'/screen1'</span>: (context) =&gt; Screen1(),
+        <span class="hljs-string">'/screen2'</span>: (context) =&gt; Screen2(),
+      },
+    );
+  }
+}
+</code></pre>
+</li>
+<li class="has-line-data" data-line-start="1201" data-line-end="1208">
+<p class="has-line-data" data-line-start="1201" data-line-end="1203"><strong>Navegar Usando Nombre</strong>:<br>
+Para navegar entre rutas, utiliza el nombre de la ruta con <code>Navigator.pushNamed</code>.</p>
+<pre><code class="has-line-data" data-line-start="1205" data-line-end="1207" class="language-dart">Navigator.pushNamed(context, <span class="hljs-string">'/screen2'</span>);
+</code></pre>
+</li>
+<li class="has-line-data" data-line-start="1208" data-line-end="1215">
+<p class="has-line-data" data-line-start="1208" data-line-end="1210"><strong>Volver a la Pantalla Anterior</strong>:<br>
+Usa <code>Navigator.pop</code> para regresar a la pantalla anterior.</p>
+<pre><code class="has-line-data" data-line-start="1212" data-line-end="1214" class="language-dart">Navigator.pop(context);
+</code></pre>
+</li>
+</ol>
+<h4 class="code-line" data-line-start=1215 data-line-end=1216 ><a id="Uso_del_Sistema_de_Enrutamiento_Avanzado_1215"></a>Uso del Sistema de Enrutamiento Avanzado</h4>
+<ol>
+<li class="has-line-data" data-line-start="1217" data-line-end="1273">
+<p class="has-line-data" data-line-start="1217" data-line-end="1219"><strong>Configurar el Router</strong>:<br>
+Si deseas utilizar el nuevo sistema de enrutamiento basado en <code>Router</code> y <code>RouteInformationParser</code>, primero necesitas crear un <code>RouterDelegate</code> y un <code>RouteInformationParser</code>.</p>
+<pre><code class="has-line-data" data-line-start="1221" data-line-end="1272" class="language-dart"><span class="hljs-keyword">void</span> main() {
+  runApp(MyApp());
+}
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MyApp</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">StatelessWidget</span> </span>{
+  <span class="hljs-annotation">@override</span>
+  Widget build(BuildContext context) {
+    <span class="hljs-keyword">return</span> MaterialApp.router(
+      routerDelegate: AppRouterDelegate(),
+      routeInformationParser: AppRouteInformationParser(),
+    );
+  }
+}
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">AppRouterDelegate</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">RouterDelegate</span>&lt;<span class="hljs-title">AppRoutePath</span>&gt; 
+    <span class="hljs-title">with</span> <span class="hljs-title">ChangeNotifier</span>, <span class="hljs-title">PopNavigatorRouterDelegateMixin</span>&lt;<span class="hljs-title">AppRoutePath</span>&gt; </span>{
+  <span class="hljs-annotation">@override</span>
+  AppRoutePath <span class="hljs-literal">get</span> currentConfiguration {
+    <span class="hljs-comment">// Implement your path logic</span>
+  }
+
+  <span class="hljs-annotation">@override</span>
+  Widget build(BuildContext context) {
+    <span class="hljs-keyword">return</span> Navigator(
+      pages: [
+        MaterialPage(child: Screen1()),
+        <span class="hljs-keyword">if</span> (showScreen2) MaterialPage(child: Screen2()),
+      ],
+      onPopPage: (route, result) {
+        <span class="hljs-comment">// Handle the pop</span>
+      },
+    );
+  }
+
+  <span class="hljs-annotation">@override</span>
+  Future&lt;<span class="hljs-keyword">void</span>&gt; setNewRoutePath(AppRoutePath configuration) async {
+    <span class="hljs-comment">// Handle route changes</span>
+  }
+}
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">AppRouteInformationParser</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">RouteInformationParser</span>&lt;<span class="hljs-title">AppRoutePath</span>&gt; </span>{
+  <span class="hljs-annotation">@override</span>
+  Future&lt;AppRoutePath&gt; parseRouteInformation(RouteInformation routeInformation) async {
+    <span class="hljs-comment">// Parse route information</span>
+  }
+}
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">AppRoutePath</span> </span>{
+  <span class="hljs-comment">// Define your path configuration</span>
+}
+</code></pre>
+</li>
+<li class="has-line-data" data-line-start="1273" data-line-end="1284">
+<p class="has-line-data" data-line-start="1273" data-line-end="1275"><strong>Navegar con Router</strong>:<br>
+Puedes manejar la navegación llamando a métodos en tu <code>RouterDelegate</code>.</p>
+<pre><code class="has-line-data" data-line-start="1277" data-line-end="1283" class="language-dart"><span class="hljs-comment">// En tu RouterDelegate</span>
+<span class="hljs-keyword">void</span> _navigateToScreen2() {
+  <span class="hljs-comment">// Actualiza el estado para mostrar la Screen2</span>
+  notifyListeners();
+}
+</code></pre>
+</li>
+<li class="has-line-data" data-line-start="1284" data-line-end="1297">
+<p class="has-line-data" data-line-start="1284" data-line-end="1286"><strong>Ruta Inicial</strong>:<br>
+Puedes establecer la ruta inicial en la configuración del <code>MaterialApp.router</code> para que se cargue la pantalla deseada al inicio.</p>
+<pre><code class="has-line-data" data-line-start="1288" data-line-end="1296" class="language-dart">MaterialApp.router(
+  routerDelegate: AppRouterDelegate(),
+  routeInformationParser: AppRouteInformationParser(),
+  routeInformationProvider: PlatformRouteInformationProvider(
+    initialRouteInformation: RouteInformation(location: <span class="hljs-string">'/screen1'</span>),
+  ),
+);
+</code></pre>
+</li>
+</ol>
+<h4 class="code-line" data-line-start=1297 data-line-end=1298 ><a id="Ejemplo_Prctico_1297"></a>Ejemplo Práctico</h4>
+<p class="has-line-data" data-line-start="1299" data-line-end="1300">Aquí tienes un ejemplo simplificado usando el sistema de enrutamiento clásico para definir rutas y navegar entre ellas:</p>
+<pre><code class="has-line-data" data-line-start="1302" data-line-end="1354" class="language-dart"><span class="hljs-keyword">void</span> main() {
+  runApp(MyApp());
+}
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MyApp</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">StatelessWidget</span> </span>{
+  <span class="hljs-annotation">@override</span>
+  Widget build(BuildContext context) {
+    <span class="hljs-keyword">return</span> MaterialApp(
+      title: <span class="hljs-string">'Demo de Navegación'</span>,
+      initialRoute: <span class="hljs-string">'/screen1'</span>,
+      routes: {
+        <span class="hljs-string">'/screen1'</span>: (context) =&gt; Screen1(),
+        <span class="hljs-string">'/screen2'</span>: (context) =&gt; Screen2(),
+      },
+    );
+  }
+}
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Screen1</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">StatelessWidget</span> </span>{
+  <span class="hljs-annotation">@override</span>
+  Widget build(BuildContext context) {
+    <span class="hljs-keyword">return</span> Scaffold(
+      appBar: AppBar(title: Text(<span class="hljs-string">'Screen 1'</span>)),
+      body: Center(
+        child: ElevatedButton(
+          onPressed: () {
+            Navigator.pushNamed(context, <span class="hljs-string">'/screen2'</span>);
+          },
+          child: Text(<span class="hljs-string">'Ir a Screen 2'</span>),
+        ),
+      ),
+    );
+  }
+}
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Screen2</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">StatelessWidget</span> </span>{
+  <span class="hljs-annotation">@override</span>
+  Widget build(BuildContext context) {
+    <span class="hljs-keyword">return</span> Scaffold(
+      appBar: AppBar(title: Text(<span class="hljs-string">'Screen 2'</span>)),
+      body: Center(
+        child: ElevatedButton(
+          onPressed: () {
+            Navigator.pop(context);
+          },
+          child: Text(<span class="hljs-string">'Volver a Screen 1'</span>),
+        ),
+      ),
+    );
+  }
+}
+</code></pre>
+<p class="has-line-data" data-line-start="1355" data-line-end="1356">Este ejemplo muestra cómo definir rutas y navegar entre pantallas usando el sistema de rutas clásico en Flutter.</p>
+<p class="has-line-data" data-line-start="1357" data-line-end="1358">Para lograr que un contenedor tome todo el espacio disponible y evitar que interfiera con áreas no deseadas, puedes usar varias técnicas en Flutter. Aquí te explico los conceptos que mencionaste y cómo aplicarlos:</p>
+<h3 class="code-line" data-line-start=1359 data-line-end=1360 ><a id="SafeArea_1359"></a>SafeArea</h3>
+<p class="has-line-data" data-line-start="1361" data-line-end="1362">El widget <code>SafeArea</code> se utiliza para evitar que el contenido se superponga con áreas de la pantalla que pueden estar ocupadas por elementos del sistema, como la barra de estado o la barra de navegación.</p>
+<pre><code class="has-line-data" data-line-start="1364" data-line-end="1373" class="language-dart">SafeArea(
+  bottom: <span class="hljs-keyword">false</span>, <span class="hljs-comment">// Evita que el SafeArea aplique restricciones en la parte inferior</span>
+  child: Column(
+    children: [
+      <span class="hljs-comment">// Tus widgets aquí</span>
+    ],
+  ),
+);
+</code></pre>
+<h3 class="code-line" data-line-start=1374 data-line-end=1375 ><a id="Uso_de_Doubleinfinity_1374"></a>Uso de <code>Double.infinity</code></h3>
+<p class="has-line-data" data-line-start="1376" data-line-end="1377">Para que un contenedor ocupe todo el espacio disponible en una dirección específica (horizontal o vertical), puedes usar <code>double.infinity</code>.</p>
+<pre><code class="has-line-data" data-line-start="1379" data-line-end="1385" class="language-dart">Container(
+  width: <span class="hljs-built_in">double</span>.infinity, <span class="hljs-comment">// Ocupa todo el ancho disponible</span>
+  color: Colors.grey,
+  child: Text(<span class="hljs-string">'Texto de prueba'</span>),
+);
+</code></pre>
+<h3 class="code-line" data-line-start=1386 data-line-end=1387 ><a id="Ejemplo_Completo_1386"></a>Ejemplo Completo</h3>
+<p class="has-line-data" data-line-start="1388" data-line-end="1389">Combina ambos conceptos para asegurar que tu diseño no interfiera con las áreas seguras y que los widgets ocupen todo el espacio disponible:</p>
+<pre><code class="has-line-data" data-line-start="1391" data-line-end="1424" class="language-dart"><span class="hljs-literal">import</span> <span class="hljs-string">'package:flutter/material.dart'</span>;
+
+<span class="hljs-keyword">void</span> main() {
+  runApp(MyApp());
+}
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MyApp</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">StatelessWidget</span> </span>{
+  <span class="hljs-annotation">@override</span>
+  Widget build(BuildContext context) {
+    <span class="hljs-keyword">return</span> MaterialApp(
+      home: Scaffold(
+        appBar: AppBar(title: Text(<span class="hljs-string">'SafeArea y Ancho Completo'</span>)),
+        body: SafeArea(
+          bottom: <span class="hljs-keyword">false</span>, <span class="hljs-comment">// Ajuste opcional para no aplicar SafeArea en la parte inferior</span>
+          child: Column(
+            children: [
+              Container(
+                width: <span class="hljs-built_in">double</span>.infinity, <span class="hljs-comment">// Ancho completo</span>
+                color: Colors.grey,
+                child: Text(
+                  <span class="hljs-string">'Texto de prueba'</span>,
+                  textAlign: TextAlign.center,
+                ),
+              ),
+              <span class="hljs-comment">// Otros widgets aquí</span>
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+</code></pre>
+<h3 class="code-line" data-line-start=1425 data-line-end=1426 ><a id="Resumen_1425"></a>Resumen</h3>
+<ul>
+<li class="has-line-data" data-line-start="1427" data-line-end="1428"><strong><code>SafeArea</code></strong>: Asegura que el contenido no se superponga con elementos del sistema, excepto en las áreas que especifiques.</li>
+<li class="has-line-data" data-line-start="1428" data-line-end="1430"><strong><code>double.infinity</code></strong>: Hace que el contenedor ocupe todo el espacio disponible en la dirección especificada.</li>
+</ul>
+<p class="has-line-data" data-line-start="1430" data-line-end="1431">Estos conceptos te ayudarán a diseñar interfaces que se adapten correctamente a diferentes tamaños y configuraciones de pantalla.</p>
+<p class="has-line-data" data-line-start="1432" data-line-end="1433">Para ajustar márgenes y espacios en Flutter, aquí tienes una guía rápida sobre los widgets <code>Card</code>, <code>SizedBox</code>, <code>Padding</code> y <code>EdgeInsets</code>:</p>
+<h3 class="code-line" data-line-start=1434 data-line-end=1435 ><a id="Ajustar_Mrgenes_en_Card_1434"></a>Ajustar Márgenes en <code>Card</code></h3>
+<p class="has-line-data" data-line-start="1436" data-line-end="1437">El widget <code>Card</code> en Flutter tiene un margen predeterminado que puedes ajustar usando la propiedad <code>margin</code>:</p>
+<pre><code class="has-line-data" data-line-start="1439" data-line-end="1444" class="language-dart">Card(
+  margin: EdgeInsets.all(<span class="hljs-number">0</span>), <span class="hljs-comment">// Elimina el margen predeterminado</span>
+  child: <span class="hljs-comment">// Tu contenido aquí,</span>
+);
+</code></pre>
+<p class="has-line-data" data-line-start="1445" data-line-end="1446">También puedes ajustar el margen con <code>EdgeInsets.symmetric</code> o <code>EdgeInsets.only</code> si necesitas más control:</p>
+<pre><code class="has-line-data" data-line-start="1448" data-line-end="1453" class="language-dart">Card(
+  margin: EdgeInsets.symmetric(horizontal: <span class="hljs-number">10</span>, vertical: <span class="hljs-number">5</span>),
+  child: <span class="hljs-comment">// Tu contenido aquí,</span>
+);
+</code></pre>
+<h3 class="code-line" data-line-start=1454 data-line-end=1455 ><a id="Aadir_Espacio_Horizontal_con_SizedBox_1454"></a>Añadir Espacio Horizontal con <code>SizedBox</code></h3>
+<p class="has-line-data" data-line-start="1456" data-line-end="1457">Para añadir espacio horizontal entre widgets, usa <code>SizedBox</code>:</p>
+<pre><code class="has-line-data" data-line-start="1459" data-line-end="1471" class="language-dart">Row(
+  children: [
+    Card(
+      child: <span class="hljs-comment">// Contenido de la tarjeta,</span>
+    ),
+    SizedBox(width: <span class="hljs-number">12</span>), <span class="hljs-comment">// Espacio horizontal de 12 píxeles</span>
+    Card(
+      child: <span class="hljs-comment">// Otro contenido,</span>
+    ),
+  ],
+);
+</code></pre>
+<h3 class="code-line" data-line-start=1472 data-line-end=1473 ><a id="Aadir_Espacio_General_con_Padding_1472"></a>Añadir Espacio General con <code>Padding</code></h3>
+<p class="has-line-data" data-line-start="1474" data-line-end="1475">Para añadir espacio alrededor de un widget, usa <code>Padding</code>:</p>
+<pre><code class="has-line-data" data-line-start="1477" data-line-end="1482" class="language-dart">Padding(
+  padding: EdgeInsets.all(<span class="hljs-number">12</span>), <span class="hljs-comment">// Añade 12 píxeles de padding en todos los lados</span>
+  child: <span class="hljs-comment">// Tu contenido aquí,</span>
+);
+</code></pre>
+<h3 class="code-line" data-line-start=1483 data-line-end=1484 ><a id="Aadir_Espacio_en_Row_y_Column_1483"></a>Añadir Espacio en <code>Row</code> y <code>Column</code></h3>
+<p class="has-line-data" data-line-start="1485" data-line-end="1486">Para añadir espacio entre los widgets en una fila (<code>Row</code>) o columna (<code>Column</code>), puedes envolverlos en un <code>Padding</code> o usar <code>MainAxisAlignment</code> y <code>CrossAxisAlignment</code> para alineaciones:</p>
+<pre><code class="has-line-data" data-line-start="1488" data-line-end="1503" class="language-dart">Padding(
+  padding: EdgeInsets.symmetric(horizontal: <span class="hljs-number">20</span>), <span class="hljs-comment">// Espacio horizontal de 20 píxeles</span>
+  child: Row(
+    mainAxisAlignment: MainAxisAlignment.spaceBetween, <span class="hljs-comment">// Espacio entre los elementos de la fila</span>
+    children: [
+      Card(
+        child: <span class="hljs-comment">// Contenido de la tarjeta,</span>
+      ),
+      Card(
+        child: <span class="hljs-comment">// Otro contenido,</span>
+      ),
+    ],
+  ),
+);
+</code></pre>
+<h3 class="code-line" data-line-start=1504 data-line-end=1505 ><a id="Ejemplo_Completo_1504"></a>Ejemplo Completo</h3>
+<p class="has-line-data" data-line-start="1506" data-line-end="1507">Aquí tienes un ejemplo completo que muestra cómo combinar estos conceptos:</p>
+<pre><code class="has-line-data" data-line-start="1509" data-line-end="1563" class="language-dart"><span class="hljs-literal">import</span> <span class="hljs-string">'package:flutter/material.dart'</span>;
+
+<span class="hljs-keyword">void</span> main() {
+  runApp(MyApp());
+}
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MyApp</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">StatelessWidget</span> </span>{
+  <span class="hljs-annotation">@override</span>
+  Widget build(BuildContext context) {
+    <span class="hljs-keyword">return</span> MaterialApp(
+      home: Scaffold(
+        appBar: AppBar(title: Text(<span class="hljs-string">'Espaciado y Márgenes'</span>)),
+        body: Padding(
+          padding: EdgeInsets.all(<span class="hljs-number">20</span>), <span class="hljs-comment">// Padding general alrededor del contenido</span>
+          child: Column(
+            children: [
+              Row(
+                children: [
+                  Card(
+                    margin: EdgeInsets.all(<span class="hljs-number">0</span>), <span class="hljs-comment">// Elimina el margen predeterminado</span>
+                    child: Container(
+                      width: <span class="hljs-number">100</span>,
+                      height: <span class="hljs-number">100</span>,
+                      color: Colors.red,
+                    ),
+                  ),
+                  SizedBox(width: <span class="hljs-number">12</span>), <span class="hljs-comment">// Espacio horizontal entre las tarjetas</span>
+                  Card(
+                    margin: EdgeInsets.all(<span class="hljs-number">0</span>),
+                    child: Container(
+                      width: <span class="hljs-number">100</span>,
+                      height: <span class="hljs-number">100</span>,
+                      color: Colors.blue,
+                    ),
+                  ),
+                ],
+              ),
+              SizedBox(height: <span class="hljs-number">20</span>), <span class="hljs-comment">// Espacio vertical entre las filas</span>
+              Card(
+                margin: EdgeInsets.all(<span class="hljs-number">12</span>), <span class="hljs-comment">// Margen alrededor de la tarjeta</span>
+                child: Container(
+                  width: <span class="hljs-built_in">double</span>.infinity, <span class="hljs-comment">// Toma todo el ancho disponible</span>
+                  height: <span class="hljs-number">100</span>,
+                  color: Colors.green,
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+</code></pre>
+<h3 class="code-line" data-line-start=1564 data-line-end=1565 ><a id="Resumen_1564"></a>Resumen</h3>
+<ul>
+<li class="has-line-data" data-line-start="1566" data-line-end="1567"><strong><code>EdgeInsets</code></strong>: Utiliza para definir márgenes y paddings. Puede ser <code>all</code>, <code>symmetric</code>, o <code>only</code>.</li>
+<li class="has-line-data" data-line-start="1567" data-line-end="1568"><strong><code>SizedBox</code></strong>: Añade espacio fijo entre widgets.</li>
+<li class="has-line-data" data-line-start="1568" data-line-end="1569"><strong><code>Padding</code></strong>: Añade espacio alrededor de un widget.</li>
+<li class="has-line-data" data-line-start="1569" data-line-end="1571"><strong><code>Card</code></strong>: Tiene un margen predeterminado que puedes ajustar con <code>margin</code>.</li>
+</ul>
+<p class="has-line-data" data-line-start="1571" data-line-end="1572">Estos conceptos te ayudarán a ajustar el diseño y el espaciado en tus aplicaciones Flutter.</p>
+<p class="has-line-data" data-line-start="1573" data-line-end="1574">Para crear un diálogo personalizado en Flutter que incluya campos de entrada y un área de arrastre, puedes seguir estos pasos:</p>
+<h3 class="code-line" data-line-start=1575 data-line-end=1576 ><a id="1_Crear_el_Contenedor_del_Dilogo_1575"></a>1. <strong>Crear el Contenedor del Diálogo</strong></h3>
+<p class="has-line-data" data-line-start="1577" data-line-end="1578">Primero, necesitas un contenedor que actúe como el contenido del diálogo. Puedes darle un tamaño específico y un ancho de <code>Double.infinity</code> para que se ajuste al ancho disponible.</p>
+<pre><code class="has-line-data" data-line-start="1580" data-line-end="1586" class="language-dart">Container(
+  height: <span class="hljs-number">680</span>, <span class="hljs-comment">// Altura del contenedor</span>
+  width: <span class="hljs-built_in">double</span>.infinity, <span class="hljs-comment">// Ancho completo</span>
+  child: <span class="hljs-comment">// El contenido del diálogo aquí,</span>
+);
+</code></pre>
+<h3 class="code-line" data-line-start=1587 data-line-end=1588 ><a id="2_Agregar_una_Columna_para_los_Campos_de_Entrada_1587"></a>2. <strong>Agregar una Columna para los Campos de Entrada</strong></h3>
+<p class="has-line-data" data-line-start="1589" data-line-end="1590">Dentro del contenedor, usa una <code>Column</code> para organizar los widgets verticalmente:</p>
+<pre><code class="has-line-data" data-line-start="1592" data-line-end="1603" class="language-dart">Container(
+  height: <span class="hljs-number">680</span>,
+  width: <span class="hljs-built_in">double</span>.infinity,
+  child: Column(
+    crossAxisAlignment: CrossAxisAlignment.stretch, <span class="hljs-comment">// Para que los widgets hijos ocupen todo el ancho</span>
+    children: [
+      <span class="hljs-comment">// Aquí van los widgets para los campos de entrada</span>
+    ],
+  ),
+);
+</code></pre>
+<h3 class="code-line" data-line-start=1604 data-line-end=1605 ><a id="3_Agregar_un_Espaciado_1604"></a>3. <strong>Agregar un Espaciado</strong></h3>
+<p class="has-line-data" data-line-start="1606" data-line-end="1607">Puedes agregar un <code>SizedBox</code> para dejar espacio entre los elementos:</p>
+<pre><code class="has-line-data" data-line-start="1609" data-line-end="1611" class="language-dart">SizedBox(height: <span class="hljs-number">20</span>), <span class="hljs-comment">// Espacio vertical de 20 píxeles</span>
+</code></pre>
+<h3 class="code-line" data-line-start=1612 data-line-end=1613 ><a id="4_Crear_los_Campos_de_Entrada_1612"></a>4. <strong>Crear los Campos de Entrada</strong></h3>
+<p class="has-line-data" data-line-start="1614" data-line-end="1615">Agrega los campos de entrada para el monto y la descripción:</p>
+<pre><code class="has-line-data" data-line-start="1617" data-line-end="1629" class="language-dart">TextField(
+  decoration: InputDecoration(
+    labelText: <span class="hljs-string">'Amount'</span>,
+  ),
+),
+SizedBox(height: <span class="hljs-number">20</span>),
+TextField(
+  decoration: InputDecoration(
+    labelText: <span class="hljs-string">'Description'</span>,
+  ),
+),
+</code></pre>
+<h3 class="code-line" data-line-start=1630 data-line-end=1631 ><a id="5_Agregar_un_rea_de_Arrastre_Drag_Handler_1630"></a>5. <strong>Agregar un Área de Arrastre (Drag Handler)</strong></h3>
+<p class="has-line-data" data-line-start="1632" data-line-end="1633">Para agregar un área de arrastre, puedes usar un pequeño contenedor en la parte superior del diálogo:</p>
+<pre><code class="has-line-data" data-line-start="1635" data-line-end="1648" class="language-dart">Container(
+  height: <span class="hljs-number">10</span>, <span class="hljs-comment">// Altura del área de arrastre</span>
+  width: <span class="hljs-number">40</span>, <span class="hljs-comment">// Ancho del área de arrastre</span>
+  color: Colors.grey, <span class="hljs-comment">// Color del área de arrastre</span>
+  margin: EdgeInsets.symmetric(vertical: <span class="hljs-number">10</span>), <span class="hljs-comment">// Márgenes para centrar el área de arrastre</span>
+  alignment: Alignment.center,
+  child: Container(
+    height: <span class="hljs-number">5</span>,
+    width: <span class="hljs-number">30</span>,
+    color: Colors.black,
+  ),
+),
+</code></pre>
+<h3 class="code-line" data-line-start=1649 data-line-end=1650 ><a id="Ejemplo_Completo_1649"></a>Ejemplo Completo</h3>
+<p class="has-line-data" data-line-start="1651" data-line-end="1652">Aquí tienes el código completo para un diálogo básico:</p>
+<pre><code class="has-line-data" data-line-start="1654" data-line-end="1702" class="language-dart">showDialog(
+  context: context,
+  builder: (BuildContext context) {
+    <span class="hljs-keyword">return</span> Dialog(
+      child: Container(
+        height: <span class="hljs-number">680</span>,
+        width: <span class="hljs-built_in">double</span>.infinity,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            Container(
+              height: <span class="hljs-number">10</span>,
+              width: <span class="hljs-number">40</span>,
+              color: Colors.grey,
+              margin: EdgeInsets.symmetric(vertical: <span class="hljs-number">10</span>),
+              alignment: Alignment.center,
+              child: Container(
+                height: <span class="hljs-number">5</span>,
+                width: <span class="hljs-number">30</span>,
+                color: Colors.black,
+              ),
+            ),
+            Padding(
+              padding: <span class="hljs-keyword">const</span> EdgeInsets.all(<span class="hljs-number">20.0</span>),
+              child: Column(
+                children: [
+                  TextField(
+                    decoration: InputDecoration(
+                      labelText: <span class="hljs-string">'Amount'</span>,
+                    ),
+                  ),
+                  SizedBox(height: <span class="hljs-number">20</span>),
+                  TextField(
+                    decoration: InputDecoration(
+                      labelText: <span class="hljs-string">'Description'</span>,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            <span class="hljs-comment">// Aquí puedes agregar botones u otros widgets</span>
+          ],
+        ),
+      ),
+    );
+  },
+);
+</code></pre>
+<p class="has-line-data" data-line-start="1703" data-line-end="1704">Este ejemplo muestra cómo crear un diálogo con campos de entrada y un área de arrastre. Puedes ajustar el diseño y los estilos según tus necesidades.</p>
+<p class="has-line-data" data-line-start="1705" data-line-end="1706">Para continuar con el desarrollo del diálogo en Flutter y ajustar el diseño, sigamos estos pasos:</p>
+<h3 class="code-line" data-line-start=1707 data-line-end=1708 ><a id="1_Agregar_el_Foco_Automtico_1707"></a>1. <strong>Agregar el Foco Automático</strong></h3>
+<p class="has-line-data" data-line-start="1709" data-line-end="1710">Para que el campo de texto tenga el foco automáticamente cuando se abre el diálogo, usa la propiedad <code>autofocus</code> en el <code>TextField</code>:</p>
+<pre><code class="has-line-data" data-line-start="1712" data-line-end="1719" class="language-dart">TextField(
+  decoration: InputDecoration(
+    labelText: <span class="hljs-string">'Amount'</span>,
+  ),
+  autofocus: <span class="hljs-keyword">true</span>, <span class="hljs-comment">// Activa el foco automático en este campo</span>
+),
+</code></pre>
+<h3 class="code-line" data-line-start=1720 data-line-end=1721 ><a id="2_Establecer_la_Altura_del_Dilogo_1720"></a>2. <strong>Establecer la Altura del Diálogo</strong></h3>
+<p class="has-line-data" data-line-start="1722" data-line-end="1723">Asegúrate de que el diálogo tenga suficiente altura para mostrar todos los campos y elementos que deseas. Puedes establecer una altura fija o permitir que se ajuste dinámicamente según el contenido:</p>
+<pre><code class="has-line-data" data-line-start="1725" data-line-end="1736" class="language-dart">Container(
+  height: <span class="hljs-number">680</span>, <span class="hljs-comment">// Altura del contenedor</span>
+  width: <span class="hljs-built_in">double</span>.infinity, <span class="hljs-comment">// Ancho completo</span>
+  child: Column(
+    crossAxisAlignment: CrossAxisAlignment.stretch,
+    children: [
+      <span class="hljs-comment">// Widgets para los campos de entrada y otros elementos</span>
+    ],
+  ),
+);
+</code></pre>
+<h3 class="code-line" data-line-start=1737 data-line-end=1738 ><a id="3_Agregar_el_Campo_de_Descripcin_1737"></a>3. <strong>Agregar el Campo de Descripción</strong></h3>
+<p class="has-line-data" data-line-start="1739" data-line-end="1740">Agrega el campo de descripción y asegúrate de que tenga un espacio adecuado alrededor:</p>
+<pre><code class="has-line-data" data-line-start="1742" data-line-end="1749" class="language-dart">TextField(
+  decoration: InputDecoration(
+    labelText: <span class="hljs-string">'Description'</span>,
+  ),
+  autofocus: <span class="hljs-keyword">false</span>, <span class="hljs-comment">// No es necesario que este campo tenga foco automático</span>
+),
+</code></pre>
+<h3 class="code-line" data-line-start=1750 data-line-end=1751 ><a id="4_Ajustar_el_Tamao_del_Dilogo_1750"></a>4. <strong>Ajustar el Tamaño del Diálogo</strong></h3>
+<p class="has-line-data" data-line-start="1752" data-line-end="1753">Si el diálogo no se muestra con el tamaño esperado, revisa si estás usando un <code>ScrollController</code> para permitir que el diálogo se ajuste según el contenido. También puedes especificar el tamaño del <code>BottomSheet</code>:</p>
+<pre><code class="has-line-data" data-line-start="1755" data-line-end="1770" class="language-dart">showModalBottomSheet(
+  context: context,
+  builder: (context) =&gt; Container(
+    height: <span class="hljs-number">680</span>, <span class="hljs-comment">// Altura fija del diálogo</span>
+    width: <span class="hljs-built_in">double</span>.infinity, <span class="hljs-comment">// Ancho completo</span>
+    child: Column(
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      children: [
+        <span class="hljs-comment">// Widgets del diálogo</span>
+      ],
+    ),
+  ),
+  isScrollControlled: <span class="hljs-keyword">true</span>, <span class="hljs-comment">// Permite que el diálogo se ajuste a la altura del contenido</span>
+);
+</code></pre>
+<h3 class="code-line" data-line-start=1771 data-line-end=1772 ><a id="5_Agregar_el_rea_de_Arrastre_1771"></a>5. <strong>Agregar el Área de Arrastre</strong></h3>
+<p class="has-line-data" data-line-start="1773" data-line-end="1774">Para mejorar la apariencia del diálogo, agrega un área de arrastre en la parte superior:</p>
+<pre><code class="has-line-data" data-line-start="1776" data-line-end="1783" class="language-dart">Container(
+  height: <span class="hljs-number">10</span>, <span class="hljs-comment">// Altura del área de arrastre</span>
+  width: <span class="hljs-number">40</span>, <span class="hljs-comment">// Ancho del área de arrastre</span>
+  color: Colors.grey, <span class="hljs-comment">// Color del área de arrastre</span>
+  margin: EdgeInsets.symmetric(vertical: <span class="hljs-number">10</span>), <span class="hljs-comment">// Espacio arriba y abajo</span>
+);
+</code></pre>
+<h3 class="code-line" data-line-start=1784 data-line-end=1785 ><a id="6_Verificar_la_Apariencia_Final_1784"></a>6. <strong>Verificar la Apariencia Final</strong></h3>
+<p class="has-line-data" data-line-start="1786" data-line-end="1787">Asegúrate de que todos los elementos estén bien alineados y que el diálogo tenga el tamaño y diseño adecuados. Ajusta las propiedades de los <code>TextField</code> y el <code>Container</code> según sea necesario para que todo se vea bien.</p>
+<p class="has-line-data" data-line-start="1788" data-line-end="1789">Con estos pasos, deberías tener un diálogo funcional con campos de entrada y un área de arrastre, con el diseño ajustado a tus necesidades.</p>
+<h3 class="code-line" data-line-start=1790 data-line-end=1791 ><a id="Arquitectura_de_Software_1790"></a>Arquitectura de Software</h3>
+<p class="has-line-data" data-line-start="1792" data-line-end="1793">La <strong>arquitectura de software</strong> se refiere a la estructura organizativa de un sistema de software, que define los componentes del sistema, sus interacciones y los principios que guiarán su diseño y evolución. Aquí hay algunos puntos clave sobre por qué es importante y qué debes tener en cuenta:</p>
+<h4 class="code-line" data-line-start=1794 data-line-end=1795 ><a id="1_Planificacin_y_Diseo_1794"></a>1. <strong>Planificación y Diseño</strong></h4>
+<ul>
+<li class="has-line-data" data-line-start="1796" data-line-end="1798">
+<p class="has-line-data" data-line-start="1796" data-line-end="1797"><strong>Analogía con la Construcción</strong>: Tal como en la construcción de una casa o un rascacielos se requiere una planificación meticulosa, en el desarrollo de software, una arquitectura bien diseñada asegura que el sistema sea robusto y pueda escalar adecuadamente. No se puede simplemente empezar a construir sin una planificación adecuada; de lo contrario, el sistema podría no ser capaz de soportar cambios o ampliaciones futuras.</p>
+</li>
+<li class="has-line-data" data-line-start="1798" data-line-end="1800">
+<p class="has-line-data" data-line-start="1798" data-line-end="1799"><strong>Requerimientos del Negocio</strong>: La arquitectura de software debe basarse en los requerimientos del negocio. Esto incluye no solo lo que se necesita ahora, sino también cómo el sistema puede adaptarse a futuras necesidades.</p>
+</li>
+</ul>
+<h4 class="code-line" data-line-start=1800 data-line-end=1801 ><a id="2_Componentes_Clave_de_la_Arquitectura_1800"></a>2. <strong>Componentes Clave de la Arquitectura</strong></h4>
+<ul>
+<li class="has-line-data" data-line-start="1802" data-line-end="1804">
+<p class="has-line-data" data-line-start="1802" data-line-end="1803"><strong>Componentes y Módulos</strong>: Define cómo se dividen las funcionalidades en módulos o componentes. Esto puede incluir servicios, bases de datos, interfaces de usuario, etc.</p>
+</li>
+<li class="has-line-data" data-line-start="1804" data-line-end="1806">
+<p class="has-line-data" data-line-start="1804" data-line-end="1805"><strong>Interacciones y Comunicación</strong>: Establece cómo los componentes se comunicarán entre sí, ya sea a través de API, mensajería, o llamadas directas.</p>
+</li>
+<li class="has-line-data" data-line-start="1806" data-line-end="1808">
+<p class="has-line-data" data-line-start="1806" data-line-end="1807"><strong>Escalabilidad y Mantenimiento</strong>: Planifica cómo el sistema puede crecer y adaptarse con el tiempo. Una buena arquitectura facilita la escalabilidad y el mantenimiento.</p>
+</li>
+</ul>
+<h4 class="code-line" data-line-start=1808 data-line-end=1809 ><a id="3_Patrones_de_Diseo_1808"></a>3. <strong>Patrones de Diseño</strong></h4>
+<ul>
+<li class="has-line-data" data-line-start="1810" data-line-end="1812">
+<p class="has-line-data" data-line-start="1810" data-line-end="1811"><strong>Patrones de Diseño</strong>: Estos son soluciones probadas para problemas comunes en el diseño de software. Ejemplos incluyen el patrón MVC (Modelo-Vista-Controlador), que ayuda a separar las preocupaciones y facilita la gestión de la interfaz de usuario y la lógica de negocio.</p>
+</li>
+<li class="has-line-data" data-line-start="1812" data-line-end="1814">
+<p class="has-line-data" data-line-start="1812" data-line-end="1813"><strong>Manejo de Estado</strong>: Define cómo se manejará el estado en la aplicación, especialmente en aplicaciones con interfaces de usuario complejas. Diferentes arquitecturas ofrecen diferentes enfoques, como el uso de <code>setState</code>, <code>InheritedWidget</code>, o patrones como Redux o BLoC.</p>
+</li>
+</ul>
+<h4 class="code-line" data-line-start=1814 data-line-end=1815 ><a id="4_Navegacin_y_Modularidad_1814"></a>4. <strong>Navegación y Modularidad</strong></h4>
+<ul>
+<li class="has-line-data" data-line-start="1816" data-line-end="1818">
+<p class="has-line-data" data-line-start="1816" data-line-end="1817"><strong>Navegación</strong>: Planifica cómo los usuarios navegarán a través de la aplicación. Esto incluye la gestión de rutas y pantallas, así como la navegación entre ellas.</p>
+</li>
+<li class="has-line-data" data-line-start="1818" data-line-end="1820">
+<p class="has-line-data" data-line-start="1818" data-line-end="1819"><strong>Modularidad</strong>: Divide el sistema en módulos o componentes que sean independientes y reutilizables. Esto facilita el desarrollo paralelo, la prueba y el mantenimiento.</p>
+</li>
+</ul>
+<h4 class="code-line" data-line-start=1820 data-line-end=1821 ><a id="5_Consideraciones_Tcnicas_1820"></a>5. <strong>Consideraciones Técnicas</strong></h4>
+<ul>
+<li class="has-line-data" data-line-start="1822" data-line-end="1824">
+<p class="has-line-data" data-line-start="1822" data-line-end="1823"><strong>Seguridad</strong>: Asegúrate de que la arquitectura incluya consideraciones de seguridad, como autenticación, autorización y protección de datos.</p>
+</li>
+<li class="has-line-data" data-line-start="1824" data-line-end="1826">
+<p class="has-line-data" data-line-start="1824" data-line-end="1825"><strong>Rendimiento</strong>: Diseña para la eficiencia y el rendimiento. Esto incluye la optimización de consultas, la gestión eficiente de recursos y la minimización de la latencia.</p>
+</li>
+<li class="has-line-data" data-line-start="1826" data-line-end="1828">
+<p class="has-line-data" data-line-start="1826" data-line-end="1827"><strong>Integración con Otros Sistemas</strong>: Considera cómo el sistema se integrará con otros sistemas o servicios externos.</p>
+</li>
+</ul>
+<h3 class="code-line" data-line-start=1828 data-line-end=1829 ><a id="Conclusin_1828"></a>Conclusión</h3>
+<p class="has-line-data" data-line-start="1830" data-line-end="1831">Una arquitectura de software bien diseñada proporciona una base sólida para el desarrollo de una aplicación, asegurando que sea escalable, mantenible y capaz de adaptarse a cambios futuros. Es un proceso que requiere una comprensión clara de los requerimientos del negocio y una planificación cuidadosa para garantizar que el sistema pueda cumplir con esos requerimientos de manera efectiva.</p>
+<p class="has-line-data" data-line-start="1832" data-line-end="1833">Para manejar el estado global en una aplicación Flutter, el uso de <strong><code>Provider</code></strong> es una solución muy popular y eficiente. Aquí te explico cómo integrarlo y usarlo en tu aplicación:</p>
+<h3 class="code-line" data-line-start=1834 data-line-end=1835 ><a id="1_Instalacin_de_Provider_1834"></a>1. <strong>Instalación de <code>Provider</code></strong></h3>
+<ol>
+<li class="has-line-data" data-line-start="1836" data-line-end="1848">
+<p class="has-line-data" data-line-start="1836" data-line-end="1838"><strong>Agregar la Dependencia:</strong><br>
+Abre el archivo <code>pubspec.yaml</code> y agrega <code>provider</code> en la sección de dependencias:</p>
+<pre><code class="has-line-data" data-line-start="1840" data-line-end="1845" class="language-yaml">dependencies:
+  flutter:
+    sdk: flutter
+  provider: ^6.0.0  # O la versión más reciente
+</code></pre>
+<p class="has-line-data" data-line-start="1846" data-line-end="1847">Luego, guarda el archivo para que Flutter instale el paquete automáticamente o ejecuta <code>flutter pub get</code> en la terminal.</p>
+</li>
+<li class="has-line-data" data-line-start="1848" data-line-end="1874">
+<p class="has-line-data" data-line-start="1848" data-line-end="1850"><strong>Usar <code>Provider</code>:</strong><br>
+En la raíz de tu aplicación, típicamente en el <code>MaterialApp</code>, envuelve tu aplicación con un <code>ChangeNotifierProvider</code> para proporcionar la instancia de tu modelo a toda la aplicación.</p>
+<pre><code class="has-line-data" data-line-start="1852" data-line-end="1873" class="language-dart"><span class="hljs-literal">import</span> <span class="hljs-string">'package:flutter/material.dart'</span>;
+<span class="hljs-literal">import</span> <span class="hljs-string">'package:provider/provider.dart'</span>;
+
+<span class="hljs-keyword">void</span> main() {
+  runApp(
+    ChangeNotifierProvider(
+      create: (context) =&gt; YourModel(),
+      child: MyApp(),
+    ),
+  );
+}
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MyApp</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">StatelessWidget</span> </span>{
+  <span class="hljs-annotation">@override</span>
+  Widget build(BuildContext context) {
+    <span class="hljs-keyword">return</span> MaterialApp(
+      home: HomeScreen(),
+    );
+  }
+}
+</code></pre>
+</li>
+</ol>
+<h3 class="code-line" data-line-start=1874 data-line-end=1875 ><a id="2_Creacin_del_Modelo_1874"></a>2. <strong>Creación del Modelo</strong></h3>
+<p class="has-line-data" data-line-start="1876" data-line-end="1877">Crea una clase de modelo que extienda <code>ChangeNotifier</code>. Esta clase mantendrá el estado y notificará a los widgets cuando el estado cambie.</p>
+<pre><code class="has-line-data" data-line-start="1879" data-line-end="1893" class="language-dart"><span class="hljs-literal">import</span> <span class="hljs-string">'package:flutter/foundation.dart'</span>;
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">YourModel</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">ChangeNotifier</span> </span>{
+  <span class="hljs-comment">// Define tus variables de estado aquí</span>
+  <span class="hljs-built_in">String</span> _data = <span class="hljs-string">'Initial data'</span>;
+
+  <span class="hljs-built_in">String</span> <span class="hljs-literal">get</span> data =&gt; _data;
+
+  <span class="hljs-keyword">void</span> updateData(<span class="hljs-built_in">String</span> newData) {
+    _data = newData;
+    notifyListeners();
+  }
+}
+</code></pre>
+<h3 class="code-line" data-line-start=1894 data-line-end=1895 ><a id="3_Uso_del_Modelo_en_Widgets_1894"></a>3. <strong>Uso del Modelo en Widgets</strong></h3>
+<p class="has-line-data" data-line-start="1896" data-line-end="1897">Para acceder a los datos del modelo y reaccionar a los cambios en tus widgets, usa <code>Consumer</code> o <code>Provider.of</code>.</p>
+<p class="has-line-data" data-line-start="1898" data-line-end="1899"><strong>Usando <code>Consumer</code>:</strong></p>
+<pre><code class="has-line-data" data-line-start="1901" data-line-end="1927" class="language-dart"><span class="hljs-literal">import</span> <span class="hljs-string">'package:flutter/material.dart'</span>;
+<span class="hljs-literal">import</span> <span class="hljs-string">'package:provider/provider.dart'</span>;
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">HomeScreen</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">StatelessWidget</span> </span>{
+  <span class="hljs-annotation">@override</span>
+  Widget build(BuildContext context) {
+    <span class="hljs-keyword">return</span> Scaffold(
+      appBar: AppBar(title: Text(<span class="hljs-string">'Home Screen'</span>)),
+      body: Center(
+        child: Consumer&lt;YourModel&gt;(
+          builder: (context, model, child) {
+            <span class="hljs-keyword">return</span> Text(<span class="hljs-string">'Data: <span class="hljs-subst">${model.data}</span>'</span>);
+          },
+        ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          <span class="hljs-comment">// Actualiza el estado usando el modelo</span>
+          Provider.of&lt;YourModel&gt;(context, listen: <span class="hljs-keyword">false</span>).updateData(<span class="hljs-string">'New data'</span>);
+        },
+        child: Icon(Icons.update),
+      ),
+    );
+  }
+}
+</code></pre>
+<p class="has-line-data" data-line-start="1928" data-line-end="1929"><strong>Usando <code>Provider.of</code>:</strong></p>
+<pre><code class="has-line-data" data-line-start="1931" data-line-end="1955" class="language-dart"><span class="hljs-literal">import</span> <span class="hljs-string">'package:flutter/material.dart'</span>;
+<span class="hljs-literal">import</span> <span class="hljs-string">'package:provider/provider.dart'</span>;
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">HomeScreen</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">StatelessWidget</span> </span>{
+  <span class="hljs-annotation">@override</span>
+  Widget build(BuildContext context) {
+    <span class="hljs-keyword">final</span> model = Provider.of&lt;YourModel&gt;(context);
+
+    <span class="hljs-keyword">return</span> Scaffold(
+      appBar: AppBar(title: Text(<span class="hljs-string">'Home Screen'</span>)),
+      body: Center(
+        child: Text(<span class="hljs-string">'Data: <span class="hljs-subst">${model.data}</span>'</span>),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          <span class="hljs-comment">// Actualiza el estado usando el modelo</span>
+          model.updateData(<span class="hljs-string">'New data'</span>);
+        },
+        child: Icon(Icons.update),
+      ),
+    );
+  }
+}
+</code></pre>
+<h3 class="code-line" data-line-start=1956 data-line-end=1957 ><a id="4_Notas_Adicionales_1956"></a>4. <strong>Notas Adicionales</strong></h3>
+<ul>
+<li class="has-line-data" data-line-start="1958" data-line-end="1960">
+<p class="has-line-data" data-line-start="1958" data-line-end="1959"><strong>Autofocus en TextField:</strong> Si necesitas que un <code>TextField</code> tenga foco automáticamente, usa la propiedad <code>autofocus</code> en <code>true</code>.</p>
+</li>
+<li class="has-line-data" data-line-start="1960" data-line-end="1962">
+<p class="has-line-data" data-line-start="1960" data-line-end="1961"><strong>Eliminación de Margenes en <code>Card</code>:</strong> Usa <code>EdgeInsets.all(0)</code> para eliminar los márgenes predeterminados del widget <code>Card</code>.</p>
+</li>
+<li class="has-line-data" data-line-start="1962" data-line-end="1964">
+<p class="has-line-data" data-line-start="1962" data-line-end="1963"><strong>Scroll Control en <code>showModalBottomSheet</code>:</strong> Usa <code>scrollController</code> si necesitas controlar el scroll de un <code>showModalBottomSheet</code>.</p>
+</li>
+</ul>
+<p class="has-line-data" data-line-start="1964" data-line-end="1965">Usando estos pasos, podrás manejar el estado global de tu aplicación de manera efectiva con <code>Provider</code>. ¿Te gustaría más detalles sobre algún aspecto en particular?</p>
+<p class="has-line-data" data-line-start="1966" data-line-end="1967">Parece que estás configurando un sistema para añadir transacciones en tu aplicación usando <code>Provider</code>. Aquí te guío sobre cómo hacerlo correctamente:</p>
+<h3 class="code-line" data-line-start=1968 data-line-end=1969 ><a id="1_Definir_el_Modelo_de_Transaccin_1968"></a>1. <strong>Definir el Modelo de Transacción</strong></h3>
+<p class="has-line-data" data-line-start="1970" data-line-end="1971">Primero, asegúrate de que tienes una clase <code>Transaction</code> definida. Esta clase debe incluir las propiedades necesarias y posiblemente un constructor para inicializarlas.</p>
+<pre><code class="has-line-data" data-line-start="1973" data-line-end="1985" class="language-dart"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Transaction</span> </span>{
+  <span class="hljs-keyword">final</span> <span class="hljs-built_in">String</span> type; <span class="hljs-comment">// Puede ser 'income' o 'expense'</span>
+  <span class="hljs-keyword">final</span> <span class="hljs-built_in">double</span> amount;
+  <span class="hljs-keyword">final</span> <span class="hljs-built_in">String</span> description;
+
+  Transaction({
+    required <span class="hljs-keyword">this</span>.type,
+    required <span class="hljs-keyword">this</span>.amount,
+    required <span class="hljs-keyword">this</span>.description,
+  });
+}
+</code></pre>
+<h3 class="code-line" data-line-start=1986 data-line-end=1987 ><a id="2_Actualizar_el_Provider_1986"></a>2. <strong>Actualizar el Provider</strong></h3>
+<p class="has-line-data" data-line-start="1988" data-line-end="1989">Luego, en tu modelo que extiende <code>ChangeNotifier</code>, agrega una función para añadir una transacción:</p>
+<pre><code class="has-line-data" data-line-start="1991" data-line-end="2004" class="language-dart"><span class="hljs-literal">import</span> <span class="hljs-string">'package:flutter/foundation.dart'</span>;
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">TransactionsProvider</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">ChangeNotifier</span> </span>{
+  <span class="hljs-built_in">List</span>&lt;Transaction&gt; _transactions = [];
+
+  <span class="hljs-built_in">List</span>&lt;Transaction&gt; <span class="hljs-literal">get</span> transactions =&gt; _transactions;
+
+  <span class="hljs-keyword">void</span> addTransaction(Transaction transaction) {
+    _transactions.add(transaction);
+    notifyListeners(); <span class="hljs-comment">// Notifica a los widgets que escuchan los cambios</span>
+  }
+}
+</code></pre>
+<h3 class="code-line" data-line-start=2005 data-line-end=2006 ><a id="3_Usar_el_Provider_en_la_Interfaz_2005"></a>3. <strong>Usar el Provider en la Interfaz</strong></h3>
+<p class="has-line-data" data-line-start="2007" data-line-end="2008">En el widget donde quieres añadir una transacción (por ejemplo, un botón), accede al <code>Provider</code> para ejecutar la función <code>addTransaction</code>. Asegúrate de que el <code>Provider</code> esté correctamente importado y utiliza <code>Provider.of</code> con <code>listen: false</code> para no escuchar cambios:</p>
+<pre><code class="has-line-data" data-line-start="2010" data-line-end="2035" class="language-dart"><span class="hljs-literal">import</span> <span class="hljs-string">'package:flutter/material.dart'</span>;
+<span class="hljs-literal">import</span> <span class="hljs-string">'package:provider/provider.dart'</span>;
+<span class="hljs-literal">import</span> <span class="hljs-string">'transactions_provider.dart'</span>; <span class="hljs-comment">// Asegúrate de importar tu provider</span>
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">AddTransactionButton</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">StatelessWidget</span> </span>{
+  <span class="hljs-annotation">@override</span>
+  Widget build(BuildContext context) {
+    <span class="hljs-keyword">return</span> ElevatedButton(
+      onPressed: () {
+        <span class="hljs-comment">// Crear la transacción</span>
+        <span class="hljs-keyword">final</span> transaction = Transaction(
+          type: <span class="hljs-string">'expense'</span>, <span class="hljs-comment">// Ejemplo de tipo</span>
+          amount: <span class="hljs-number">100.0</span>, <span class="hljs-comment">// Ejemplo de cantidad</span>
+          description: <span class="hljs-string">'Descripción de prueba'</span>, <span class="hljs-comment">// Ejemplo de descripción</span>
+        );
+
+        <span class="hljs-comment">// Acceder al Provider y añadir la transacción</span>
+        Provider.of&lt;TransactionsProvider&gt;(context, listen: <span class="hljs-keyword">false</span>)
+            .addTransaction(transaction);
+      },
+      child: Text(<span class="hljs-string">'Add Transaction'</span>),
+    );
+  }
+}
+</code></pre>
+<h3 class="code-line" data-line-start=2036 data-line-end=2037 ><a id="4_Configurar_el_Provider_en_la_Raz_de_la_Aplicacin_2036"></a>4. <strong>Configurar el <code>Provider</code> en la Raíz de la Aplicación</strong></h3>
+<p class="has-line-data" data-line-start="2038" data-line-end="2039">Asegúrate de que tu <code>Provider</code> esté en la raíz de la aplicación para que esté disponible en todo el árbol de widgets:</p>
+<pre><code class="has-line-data" data-line-start="2041" data-line-end="2069" class="language-dart"><span class="hljs-literal">import</span> <span class="hljs-string">'package:flutter/material.dart'</span>;
+<span class="hljs-literal">import</span> <span class="hljs-string">'package:provider/provider.dart'</span>;
+<span class="hljs-literal">import</span> <span class="hljs-string">'transactions_provider.dart'</span>; <span class="hljs-comment">// Asegúrate de importar tu provider</span>
+<span class="hljs-literal">import</span> <span class="hljs-string">'add_transaction_button.dart'</span>; <span class="hljs-comment">// Asegúrate de importar el widget que usa el provider</span>
+
+<span class="hljs-keyword">void</span> main() {
+  runApp(
+    ChangeNotifierProvider(
+      create: (context) =&gt; TransactionsProvider(),
+      child: MyApp(),
+    ),
+  );
+}
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MyApp</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">StatelessWidget</span> </span>{
+  <span class="hljs-annotation">@override</span>
+  Widget build(BuildContext context) {
+    <span class="hljs-keyword">return</span> MaterialApp(
+      home: Scaffold(
+        appBar: AppBar(title: Text(<span class="hljs-string">'Transaction App'</span>)),
+        body: Center(
+          child: AddTransactionButton(),
+        ),
+      ),
+    );
+  }
+}
+</code></pre>
+<h3 class="code-line" data-line-start=2070 data-line-end=2071 ><a id="Resumen_2070"></a>Resumen</h3>
+<ol>
+<li class="has-line-data" data-line-start="2072" data-line-end="2073"><strong>Define tu modelo de transacción.</strong></li>
+<li class="has-line-data" data-line-start="2073" data-line-end="2074"><strong>Agrega métodos al <code>Provider</code> para manipular las transacciones.</strong></li>
+<li class="has-line-data" data-line-start="2074" data-line-end="2075"><strong>Utiliza <code>Provider.of</code> para interactuar con el <code>Provider</code> desde tus widgets, usando <code>listen: false</code> si no necesitas escuchar los cambios.</strong></li>
+<li class="has-line-data" data-line-start="2075" data-line-end="2077"><strong>Asegúrate de que el <code>Provider</code> esté en la raíz de tu aplicación para que esté disponible globalmente.</strong></li>
+</ol>
+<p class="has-line-data" data-line-start="2077" data-line-end="2078">Esto te permitirá añadir transacciones a tu aplicación y manejar el estado de manera efectiva usando <code>Provider</code>.</p>
+<p class="has-line-data" data-line-start="2079" data-line-end="2080">Es un consejo excelente y muy valioso para cualquier persona que esté empezando en el desarrollo de software o buscando mejorar en su carrera. Aquí hay algunos puntos clave basados en lo que mencionaste:</p>
+<ol>
+<li class="has-line-data" data-line-start="2081" data-line-end="2083">
+<p class="has-line-data" data-line-start="2081" data-line-end="2082"><strong>Nunca Dejar de Aprender</strong>: La tecnología y el desarrollo de software están en constante evolución. Mantenerse al día con nuevas herramientas, tecnologías y mejores prácticas es crucial. La curiosidad y el aprendizaje continuo son tus mejores aliados.</p>
+</li>
+<li class="has-line-data" data-line-start="2083" data-line-end="2085">
+<p class="has-line-data" data-line-start="2083" data-line-end="2084"><strong>Práctica con Proyectos Reales</strong>: Trabajar en proyectos prácticos, especialmente en algo que te apasione, te permitirá aplicar lo que aprendes y enfrentar desafíos reales. Los proyectos personales o side projects son una excelente manera de explorar nuevas tecnologías y mejorar tus habilidades.</p>
+</li>
+<li class="has-line-data" data-line-start="2085" data-line-end="2087">
+<p class="has-line-data" data-line-start="2085" data-line-end="2086"><strong>Aprender de los Errores y Fracasos</strong>: Cometer errores es una parte natural del proceso de aprendizaje. Cada error es una oportunidad para aprender y mejorar. La resiliencia y la capacidad para aprender de los fracasos son habilidades importantes.</p>
+</li>
+<li class="has-line-data" data-line-start="2087" data-line-end="2089">
+<p class="has-line-data" data-line-start="2087" data-line-end="2088"><strong>Hacer Preguntas y Buscar Orientación</strong>: No tengas miedo de hacer preguntas. Buscar ayuda y aprender de otros más experimentados puede acelerar tu proceso de aprendizaje y ayudarte a evitar errores comunes.</p>
+</li>
+<li class="has-line-data" data-line-start="2089" data-line-end="2091">
+<p class="has-line-data" data-line-start="2089" data-line-end="2090"><strong>Utilizar Recursos y Herramientas</strong>: Hay muchas librerías y herramientas disponibles, como LocalStorage, Drift y otras, que pueden ayudarte a gestionar datos en la nube y localmente. Investiga y utiliza estas herramientas para mejorar tus proyectos.</p>
+</li>
+<li class="has-line-data" data-line-start="2091" data-line-end="2093">
+<p class="has-line-data" data-line-start="2091" data-line-end="2092"><strong>Desarrollar Habilidades de Comunicación</strong>: Aprender a comunicar tus ideas y problemas claramente es fundamental en el desarrollo de software, tanto en entrevistas como en el trabajo en equipo.</p>
+</li>
+<li class="has-line-data" data-line-start="2093" data-line-end="2095">
+<p class="has-line-data" data-line-start="2093" data-line-end="2094"><strong>Mantenerse Motivado y Apasionado</strong>: La pasión por lo que haces te mantendrá motivado. El entusiasmo por aprender y crecer en tu campo puede hacer que el proceso sea mucho más gratificante.</p>
+</li>
+</ol>
+<p class="has-line-data" data-line-start="2095" data-line-end="2096">¡Sigue adelante con tu aprendizaje y no dudes en seguir explorando y desarrollando nuevas habilidades! Si necesitas ayuda con algún tema específico, aquí estoy para asistirte.</p>
+<p class="has-line-data" data-line-start="2097" data-line-end="2098">¡Excelente explicación sobre Git! Aquí tienes un resumen y algunos puntos adicionales para cada comando que mencionaste:</p>
+<ol>
+<li class="has-line-data" data-line-start="2099" data-line-end="2103">
+<p class="has-line-data" data-line-start="2099" data-line-end="2100"><strong><code>git pull</code></strong>:</p>
+<ul>
+<li class="has-line-data" data-line-start="2100" data-line-end="2101"><strong>Descripción</strong>: Obtiene los últimos cambios del repositorio remoto y los incorpora a tu rama actual. Esto es útil para mantener tu copia local sincronizada con el repositorio remoto.</li>
+<li class="has-line-data" data-line-start="2101" data-line-end="2103"><strong>Uso</strong>: <code>git pull origin &lt;nombre-de-la-rama&gt;</code></li>
+</ul>
+</li>
+<li class="has-line-data" data-line-start="2103" data-line-end="2107">
+<p class="has-line-data" data-line-start="2103" data-line-end="2104"><strong><code>git push</code></strong>:</p>
+<ul>
+<li class="has-line-data" data-line-start="2104" data-line-end="2105"><strong>Descripción</strong>: Envía tus commits locales al repositorio remoto. Esto hace que tus cambios estén disponibles para otros colaboradores.</li>
+<li class="has-line-data" data-line-start="2105" data-line-end="2107"><strong>Uso</strong>: <code>git push origin &lt;nombre-de-la-rama&gt;</code></li>
+</ul>
+</li>
+<li class="has-line-data" data-line-start="2107" data-line-end="2111">
+<p class="has-line-data" data-line-start="2107" data-line-end="2108"><strong><code>git init</code></strong>:</p>
+<ul>
+<li class="has-line-data" data-line-start="2108" data-line-end="2109"><strong>Descripción</strong>: Inicializa un nuevo repositorio Git en tu directorio actual. Esto crea un nuevo repositorio local vacío.</li>
+<li class="has-line-data" data-line-start="2109" data-line-end="2111"><strong>Uso</strong>: <code>git init</code></li>
+</ul>
+</li>
+<li class="has-line-data" data-line-start="2111" data-line-end="2115">
+<p class="has-line-data" data-line-start="2111" data-line-end="2112"><strong><code>git clone</code></strong>:</p>
+<ul>
+<li class="has-line-data" data-line-start="2112" data-line-end="2113"><strong>Descripción</strong>: Clona un repositorio remoto a tu máquina local. Esto crea una copia completa del repositorio, incluidos todos sus archivos y el historial de commits.</li>
+<li class="has-line-data" data-line-start="2113" data-line-end="2115"><strong>Uso</strong>: <code>git clone &lt;url-del-repositorio&gt;</code></li>
+</ul>
+</li>
+<li class="has-line-data" data-line-start="2115" data-line-end="2121">
+<p class="has-line-data" data-line-start="2115" data-line-end="2116"><strong><code>git add</code></strong>:</p>
+<ul>
+<li class="has-line-data" data-line-start="2116" data-line-end="2117"><strong>Descripción</strong>: Prepara archivos para el commit. Puedes agregar archivos específicos o todos los archivos modificados.</li>
+<li class="has-line-data" data-line-start="2117" data-line-end="2121"><strong>Uso</strong>:
+<ul>
+<li class="has-line-data" data-line-start="2118" data-line-end="2119">Para agregar un archivo específico: <code>git add &lt;nombre-del-archivo&gt;</code></li>
+<li class="has-line-data" data-line-start="2119" data-line-end="2121">Para agregar todos los archivos modificados: <code>git add .</code></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="has-line-data" data-line-start="2121" data-line-end="2125">
+<p class="has-line-data" data-line-start="2121" data-line-end="2122"><strong><code>git commit</code></strong>:</p>
+<ul>
+<li class="has-line-data" data-line-start="2122" data-line-end="2123"><strong>Descripción</strong>: Crea un nuevo commit con los cambios que has agregado. Es importante incluir un mensaje de commit descriptivo.</li>
+<li class="has-line-data" data-line-start="2123" data-line-end="2125"><strong>Uso</strong>: <code>git commit -m &quot;Mensaje descriptivo del commit&quot;</code></li>
+</ul>
+</li>
+<li class="has-line-data" data-line-start="2125" data-line-end="2129">
+<p class="has-line-data" data-line-start="2125" data-line-end="2126"><strong><code>git status</code></strong>:</p>
+<ul>
+<li class="has-line-data" data-line-start="2126" data-line-end="2127"><strong>Descripción</strong>: Muestra el estado de los archivos en el directorio de trabajo y el área de preparación. Indica qué archivos están modificados, qué archivos están en el área de preparación para el commit, y qué archivos no están siendo seguidos.</li>
+<li class="has-line-data" data-line-start="2127" data-line-end="2129"><strong>Uso</strong>: <code>git status</code></li>
+</ul>
+</li>
+<li class="has-line-data" data-line-start="2129" data-line-end="2135">
+<p class="has-line-data" data-line-start="2129" data-line-end="2130"><strong><code>git branch</code></strong>:</p>
+<ul>
+<li class="has-line-data" data-line-start="2130" data-line-end="2131"><strong>Descripción</strong>: Muestra las ramas existentes en el repositorio. También se puede usar para crear nuevas ramas.</li>
+<li class="has-line-data" data-line-start="2131" data-line-end="2135"><strong>Uso</strong>:
+<ul>
+<li class="has-line-data" data-line-start="2132" data-line-end="2133">Para listar ramas: <code>git branch</code></li>
+<li class="has-line-data" data-line-start="2133" data-line-end="2135">Para crear una nueva rama: <code>git branch &lt;nombre-de-la-rama&gt;</code></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="has-line-data" data-line-start="2135" data-line-end="2141">
+<p class="has-line-data" data-line-start="2135" data-line-end="2136"><strong><code>git checkout</code></strong>:</p>
+<ul>
+<li class="has-line-data" data-line-start="2136" data-line-end="2137"><strong>Descripción</strong>: Cambia a una rama específica. También se puede usar para deshacer cambios en archivos.</li>
+<li class="has-line-data" data-line-start="2137" data-line-end="2141"><strong>Uso</strong>:
+<ul>
+<li class="has-line-data" data-line-start="2138" data-line-end="2139">Para cambiar de rama: <code>git checkout &lt;nombre-de-la-rama&gt;</code></li>
+<li class="has-line-data" data-line-start="2139" data-line-end="2141">Para deshacer cambios en archivos: <code>git checkout -- &lt;nombre-del-archivo&gt;</code></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="has-line-data" data-line-start="2141" data-line-end="2145">
+<p class="has-line-data" data-line-start="2141" data-line-end="2142"><strong><code>git merge</code></strong>:</p>
+<ul>
+<li class="has-line-data" data-line-start="2142" data-line-end="2143"><strong>Descripción</strong>: Combina cambios de una rama en la rama actual. Es comúnmente utilizado para integrar características o correcciones de una rama a otra.</li>
+<li class="has-line-data" data-line-start="2143" data-line-end="2145"><strong>Uso</strong>: <code>git merge &lt;nombre-de-la-rama&gt;</code></li>
+</ul>
+</li>
+</ol>
+<p class="has-line-data" data-line-start="2145" data-line-end="2146">Estos comandos son fundamentales para trabajar con Git y te ayudarán a gestionar tu código de manera efectiva tanto en proyectos individuales como en equipos. Si tienes más preguntas sobre Git o sobre cómo aplicar estos comandos en situaciones específicas, no dudes en preguntar.</p>
+<p class="has-line-data" data-line-start="2147" data-line-end="2148">Aquí tienes una descripción más detallada de los conceptos y pasos que mencionaste sobre el uso de Git, así como algunos consejos adicionales:</p>
+<h3 class="code-line" data-line-start=2149 data-line-end=2150 ><a id="READMEmd_2149"></a><strong><a href="http://README.md">README.md</a></strong></h3>
+<ul>
+<li class="has-line-data" data-line-start="2150" data-line-end="2157"><strong>Descripción</strong>: Un archivo <code>README.md</code> es crucial para cualquier repositorio, ya que proporciona una introducción y documentación sobre el proyecto. Puedes incluir:
+<ul>
+<li class="has-line-data" data-line-start="2151" data-line-end="2152"><strong>Descripción del proyecto</strong>: Qué hace el proyecto y cuál es su propósito.</li>
+<li class="has-line-data" data-line-start="2152" data-line-end="2153"><strong>Instrucciones de instalación</strong>: Cómo instalar y configurar el proyecto en un entorno local.</li>
+<li class="has-line-data" data-line-start="2153" data-line-end="2154"><strong>Uso</strong>: Cómo utilizar el proyecto, ejemplos de comandos o configuraciones.</li>
+<li class="has-line-data" data-line-start="2154" data-line-end="2155"><strong>Contribución</strong>: Guías para contribuir al proyecto.</li>
+<li class="has-line-data" data-line-start="2155" data-line-end="2157"><strong>Licencia</strong>: Detalles sobre la licencia del proyecto.</li>
+</ul>
+</li>
+</ul>
+<h3 class="code-line" data-line-start=2157 data-line-end=2158 ><a id="gitignore_2157"></a><strong>.gitignore</strong></h3>
+<ul>
+<li class="has-line-data" data-line-start="2158" data-line-end="2159"><strong>Descripción</strong>: Un archivo <code>.gitignore</code> especifica qué archivos o directorios deben ser ignorados por Git. Esto es útil para evitar que archivos temporales, de configuración local, o sensibles (como claves API) sean incluidos en el repositorio.</li>
+<li class="has-line-data" data-line-start="2159" data-line-end="2164"><strong>Uso</strong>: Puedes agregar patrones y archivos al <code>.gitignore</code> para que Git no los rastree. Ejemplos comunes incluyen:
+<ul>
+<li class="has-line-data" data-line-start="2160" data-line-end="2161">Archivos generados automáticamente.</li>
+<li class="has-line-data" data-line-start="2161" data-line-end="2162">Archivos de configuración local que contienen datos sensibles.</li>
+<li class="has-line-data" data-line-start="2162" data-line-end="2164">Directorios de dependencias.</li>
+</ul>
+</li>
+</ul>
+<h3 class="code-line" data-line-start=2164 data-line-end=2165 ><a id="Comandos_Bsicos_de_Git_2164"></a><strong>Comandos Básicos de Git</strong></h3>
+<ol>
+<li class="has-line-data" data-line-start="2165" data-line-end="2170">
+<p class="has-line-data" data-line-start="2165" data-line-end="2166"><strong>Instalación de Git</strong>:</p>
+<ul>
+<li class="has-line-data" data-line-start="2166" data-line-end="2167"><strong>Windows</strong>: Descarga el instalador desde <a href="https://git-scm.com/download/win">Git for Windows</a> y sigue las instrucciones.</li>
+<li class="has-line-data" data-line-start="2167" data-line-end="2168"><strong>Mac</strong>: Usa Homebrew: <code>brew install git</code>.</li>
+<li class="has-line-data" data-line-start="2168" data-line-end="2170"><strong>Linux</strong>: Usa el gestor de paquetes de tu distribución, por ejemplo: <code>sudo apt install git</code> para Debian/Ubuntu.</li>
+</ul>
+</li>
+<li class="has-line-data" data-line-start="2170" data-line-end="2174">
+<p class="has-line-data" data-line-start="2170" data-line-end="2171"><strong>Crear un Repositorio</strong>:</p>
+<ul>
+<li class="has-line-data" data-line-start="2171" data-line-end="2172"><strong>Local</strong>: <code>git init</code> en el directorio de tu proyecto.</li>
+<li class="has-line-data" data-line-start="2172" data-line-end="2174"><strong>Remoto</strong>: Usualmente, creas un repositorio en plataformas como GitHub, GitLab o Bitbucket.</li>
+</ul>
+</li>
+<li class="has-line-data" data-line-start="2174" data-line-end="2178">
+<p class="has-line-data" data-line-start="2174" data-line-end="2175"><strong>Agregar Archivos al Repositorio</strong>:</p>
+<ul>
+<li class="has-line-data" data-line-start="2175" data-line-end="2176"><strong>Agregar todos los archivos</strong>: <code>git add .</code></li>
+<li class="has-line-data" data-line-start="2176" data-line-end="2178"><strong>Agregar un archivo específico</strong>: <code>git add &lt;nombre-del-archivo&gt;</code></li>
+</ul>
+</li>
+<li class="has-line-data" data-line-start="2178" data-line-end="2182">
+<p class="has-line-data" data-line-start="2178" data-line-end="2179"><strong>Crear un Commit</strong>:</p>
+<ul>
+<li class="has-line-data" data-line-start="2179" data-line-end="2180"><strong>Descripción</strong>: Guarda los cambios en tu repositorio local.</li>
+<li class="has-line-data" data-line-start="2180" data-line-end="2182"><strong>Comando</strong>: <code>git commit -m &quot;Mensaje descriptivo&quot;</code></li>
+</ul>
+</li>
+<li class="has-line-data" data-line-start="2182" data-line-end="2185">
+<p class="has-line-data" data-line-start="2182" data-line-end="2183"><strong>Subir Cambios al Repositorio Remoto</strong>:</p>
+<ul>
+<li class="has-line-data" data-line-start="2183" data-line-end="2185"><strong>Comando</strong>: <code>git push origin &lt;nombre-de-la-rama&gt;</code></li>
+</ul>
+</li>
+<li class="has-line-data" data-line-start="2185" data-line-end="2188">
+<p class="has-line-data" data-line-start="2185" data-line-end="2186"><strong>Actualizar la Rama Local con Cambios del Repositorio Remoto</strong>:</p>
+<ul>
+<li class="has-line-data" data-line-start="2186" data-line-end="2188"><strong>Comando</strong>: <code>git pull origin &lt;nombre-de-la-rama&gt;</code></li>
+</ul>
+</li>
+<li class="has-line-data" data-line-start="2188" data-line-end="2191">
+<p class="has-line-data" data-line-start="2188" data-line-end="2189"><strong>Clonar un Repositorio Remoto</strong>:</p>
+<ul>
+<li class="has-line-data" data-line-start="2189" data-line-end="2191"><strong>Comando</strong>: <code>git clone &lt;url-del-repositorio&gt;</code></li>
+</ul>
+</li>
+</ol>
+<h3 class="code-line" data-line-start=2191 data-line-end=2192 ><a id="Consejos_Adicionales_2191"></a><strong>Consejos Adicionales</strong></h3>
+<ul>
+<li class="has-line-data" data-line-start="2192" data-line-end="2193"><strong>Usa Branches</strong>: Trabaja en ramas (<code>branches</code>) para separar las funcionalidades nuevas o cambios grandes de la rama principal (<code>main</code> o <code>master</code>).</li>
+<li class="has-line-data" data-line-start="2193" data-line-end="2194"><strong>Haz Commits Frecuentemente</strong>: Realiza commits pequeños y frecuentes para mantener un historial de cambios claro y manejable.</li>
+<li class="has-line-data" data-line-start="2194" data-line-end="2196"><strong>Escribe Mensajes de Commit Descriptivos</strong>: Asegúrate de que tus mensajes de commit sean claros y describan los cambios realizados.</li>
+</ul>
+<p class="has-line-data" data-line-start="2196" data-line-end="2197">Estos conceptos te ayudarán a gestionar tus proyectos de manera más eficiente y a colaborar con otros desarrolladores de forma más efectiva. ¡Sigue practicando y aprendiendo para mejorar tus habilidades en Git y en desarrollo en general!</p>
+<p class="has-line-data" data-line-start="2198" data-line-end="2199">Tu enfoque para usar Git y GitHub es una excelente manera de mostrar tu trabajo y habilidades. Aquí hay algunos puntos clave sobre cómo gestionar y presentar tus repositorios de manera efectiva:</p>
+<h3 class="code-line" data-line-start=2200 data-line-end=2201 ><a id="GitHub_como_Portafolio_2200"></a><strong>GitHub como Portafolio</strong></h3>
+<ul>
+<li class="has-line-data" data-line-start="2201" data-line-end="2202"><strong>Estrellas y Popularidad</strong>: Las estrellas en GitHub indican la popularidad de tu repositorio. Repositorios con más estrellas suelen ser más visibles y considerados más útiles o interesantes por la comunidad.</li>
+<li class="has-line-data" data-line-start="2202" data-line-end="2203"><strong>Repositorios Pinados</strong>: Pinea los repositorios que consideres más representativos de tu trabajo. Esto permite destacar los proyectos que quieres que los visitantes vean primero.</li>
+<li class="has-line-data" data-line-start="2203" data-line-end="2209"><strong><a href="http://README.md">README.md</a></strong>: Un README bien elaborado puede hacer una gran diferencia. Asegúrate de incluir:
+<ul>
+<li class="has-line-data" data-line-start="2204" data-line-end="2205"><strong>Descripción del Proyecto</strong>: Explica qué hace el proyecto y por qué es valioso.</li>
+<li class="has-line-data" data-line-start="2205" data-line-end="2206"><strong>Instrucciones de Instalación y Uso</strong>: Facilita a otros el poder usar y probar tu proyecto.</li>
+<li class="has-line-data" data-line-start="2206" data-line-end="2207"><strong>Capturas de Pantalla y Videos</strong>: Muestra la aplicación en acción. Los GIFs y capturas de pantalla son excelentes para esto.</li>
+<li class="has-line-data" data-line-start="2207" data-line-end="2209"><strong>Tecnologías y Herramientas</strong>: Enumera las tecnologías utilizadas y cualquier otra información relevante.</li>
+</ul>
+</li>
+</ul>
+<h3 class="code-line" data-line-start=2209 data-line-end=2210 ><a id="Gestin_de_Repositorios_2209"></a><strong>Gestión de Repositorios</strong></h3>
+<ul>
+<li class="has-line-data" data-line-start="2210" data-line-end="2211"><strong>Organización</strong>: Mantén tus repositorios organizados y bien documentados. Usa descripciones claras y actualiza el README conforme cambian los proyectos.</li>
+<li class="has-line-data" data-line-start="2211" data-line-end="2212"><strong>Contribuciones</strong>: Asegúrate de mostrar no solo tu propio trabajo, sino también tus contribuciones a otros proyectos. Esto puede incluir pull requests, issues resueltos, y colaboraciones.</li>
+<li class="has-line-data" data-line-start="2212" data-line-end="2214"><strong>Actividades y Logs</strong>: La sección de actividad en tu perfil muestra tus contribuciones y puede dar una buena impresión de tu nivel de participación y experiencia.</li>
+</ul>
+<h3 class="code-line" data-line-start=2214 data-line-end=2215 ><a id="Uso_de_Git_2214"></a><strong>Uso de Git</strong></h3>
+<ul>
+<li class="has-line-data" data-line-start="2215" data-line-end="2222"><strong>Comandos Básicos</strong>:
+<ul>
+<li class="has-line-data" data-line-start="2216" data-line-end="2217"><strong><code>git init</code></strong>: Inicializa un nuevo repositorio local.</li>
+<li class="has-line-data" data-line-start="2217" data-line-end="2218"><strong><code>git clone &lt;URL&gt;</code></strong>: Clona un repositorio remoto a tu máquina local.</li>
+<li class="has-line-data" data-line-start="2218" data-line-end="2219"><strong><code>git add &lt;archivos&gt;</code></strong>: Añade archivos al área de preparación.</li>
+<li class="has-line-data" data-line-start="2219" data-line-end="2220"><strong><code>git commit -m &quot;mensaje&quot;</code></strong>: Crea un commit con un mensaje descriptivo.</li>
+<li class="has-line-data" data-line-start="2220" data-line-end="2221"><strong><code>git push</code></strong>: Envía tus cambios locales a un repositorio remoto.</li>
+<li class="has-line-data" data-line-start="2221" data-line-end="2222"><strong><code>git pull</code></strong>: Trae y fusiona cambios desde el repositorio remoto.</li>
+</ul>
+</li>
+<li class="has-line-data" data-line-start="2222" data-line-end="2224"><strong><code>.gitignore</code></strong>: Utiliza este archivo para especificar qué archivos y directorios deben ser ignorados por Git, evitando la inclusión de archivos innecesarios o confidenciales.</li>
+</ul>
+<h3 class="code-line" data-line-start=2224 data-line-end=2225 ><a id="Recomendaciones_Adicionales_2224"></a><strong>Recomendaciones Adicionales</strong></h3>
+<ul>
+<li class="has-line-data" data-line-start="2225" data-line-end="2226"><strong>Actualiza Regularmente</strong>: Mantén tus repositorios y documentación actualizados para reflejar el estado actual de tus proyectos.</li>
+<li class="has-line-data" data-line-start="2226" data-line-end="2228"><strong>Aprende y Adapta</strong>: La tecnología cambia rápidamente, así que sigue aprendiendo y adaptando tus conocimientos y prácticas. Usa proyectos personales para experimentar con nuevas tecnologías y técnicas.</li>
+</ul>
+<p class="has-line-data" data-line-start="2228" data-line-end="2229">Mostrar tus proyectos en GitHub de esta manera puede ser muy beneficioso, especialmente al buscar trabajo o colaborar en proyectos con otros desarrolladores.</p>
+<p class="has-line-data" data-line-start="2230" data-line-end="2231">Parece que estás en un buen camino para gestionar tu perfil de LinkedIn y tu presencia en GitHub. Aquí algunos consejos adicionales que podrían ayudarte:</p>
+<ol>
+<li class="has-line-data" data-line-start="2232" data-line-end="2238">
+<p class="has-line-data" data-line-start="2232" data-line-end="2233"><strong>LinkedIn:</strong></p>
+<ul>
+<li class="has-line-data" data-line-start="2233" data-line-end="2234"><strong>Perfil Completo:</strong> Asegúrate de completar todas las secciones de tu perfil, incluyendo experiencias, habilidades y educación. Esto ayudará a que los reclutadores te encuentren más fácilmente.</li>
+<li class="has-line-data" data-line-start="2234" data-line-end="2235"><strong>Proyectos Destacados:</strong> Agrega proyectos relevantes en la sección de “Proyectos” para mostrar tu trabajo.</li>
+<li class="has-line-data" data-line-start="2235" data-line-end="2236"><strong>Recomendaciones:</strong> Solicita recomendaciones a colegas o mentores que puedan dar una visión positiva de tus habilidades y trabajo.</li>
+<li class="has-line-data" data-line-start="2236" data-line-end="2238"><strong>Actividad Regular:</strong> Publica actualizaciones sobre tus proyectos, aprendizajes o reflexiones sobre tecnología. Esto te mantendrá visible en la red.</li>
+</ul>
+</li>
+<li class="has-line-data" data-line-start="2238" data-line-end="2243">
+<p class="has-line-data" data-line-start="2238" data-line-end="2239"><strong>GitHub:</strong></p>
+<ul>
+<li class="has-line-data" data-line-start="2239" data-line-end="2240"><strong>README y Documentación:</strong> Mantén tus repositorios bien documentados con un README claro y detallado. Incluye instrucciones de uso, ejemplos y cualquier otra información relevante.</li>
+<li class="has-line-data" data-line-start="2240" data-line-end="2241"><strong>Commits Claros:</strong> Usa mensajes de commit descriptivos que expliquen los cambios realizados. Esto ayudará a otros (y a ti mismo) a entender el historial de cambios.</li>
+<li class="has-line-data" data-line-start="2241" data-line-end="2243"><strong>Issues y Pull Requests:</strong> Usa issues para gestionar tareas o problemas y pull requests para revisar y fusionar cambios. Esto es útil para colaborar con otros.</li>
+</ul>
+</li>
+</ol>
+<p class="has-line-data" data-line-start="2243" data-line-end="2244">Estos pasos pueden ayudarte a destacar y aumentar tus oportunidades en la búsqueda de empleo y en la colaboración en proyectos. ¡Mucho éxito con tu perfil y proyectos!</p>
+<p class="has-line-data" data-line-start="2246" data-line-end="2247">El tema de las stock options es fascinante y puede tener un gran impacto en tu capital personal, especialmente en startups que eventualmente se vuelven muy exitosas o salen a bolsa. La clave es entender bien cómo funciona el vesting y cuándo puedes reclamar tus acciones.</p>
+<p class="has-line-data" data-line-start="2248" data-line-end="2249">Sobre el “job hopping,” es una estrategia válida para acelerar tu crecimiento profesional, pero como mencionas, hay que considerar tanto los beneficios como las posibles desventajas. Cambiar de empresa con frecuencia puede ofrecer nuevas oportunidades y aumentos salariales, pero también puede afectar la estabilidad y la percepción de tu trayectoria profesional a largo plazo. Es importante equilibrar estos aspectos según tus objetivos y necesidades personales.</p>
+  
+ 
+</body>
+</html>
